@@ -1,0 +1,12 @@
+c:\users\duy quan\source\repos\UIT_Snake\UIT_Snake\obj\Debug\UIT_Snake.csprojAssemblyReference.cache
+c:\users\duy quan\source\repos\UIT_Snake\UIT_Snake\obj\Debug\UIT_Snake.Properties.Resources.resources
+c:\users\duy quan\source\repos\UIT_Snake\UIT_Snake\obj\Debug\UIT_Snake.csproj.GenerateResource.cache
+c:\users\duy quan\source\repos\UIT_Snake\UIT_Snake\obj\Debug\UIT_Snake.csproj.CoreCompileInputs.cache
+c:\users\duy quan\source\repos\UIT_Snake\UIT_Snake\bin\Debug\UIT_Snake.exe.config
+c:\users\duy quan\source\repos\UIT_Snake\UIT_Snake\bin\Debug\UIT_Snake.exe
+c:\users\duy quan\source\repos\UIT_Snake\UIT_Snake\bin\Debug\UIT_Snake.pdb
+c:\users\duy quan\source\repos\UIT_Snake\UIT_Snake\obj\Debug\UIT_Snake.exe
+c:\users\duy quan\source\repos\UIT_Snake\UIT_Snake\obj\Debug\UIT_Snake.pdb
+c:\users\duy quan\source\repos\UIT_Snake\UIT_Snake\obj\Debug\UIT_Snake.Form1.resources
+C:\Users\Duy Quan\source\repos\UIT_Snake\UIT_Snake\obj\Debug\UIT_Snake.EndGame.resources
+C:\Users\Duy Quan\source\repos\UIT_Snake\UIT_Snake\obj\Debug\UIT_Snake.MenuGame.resources
