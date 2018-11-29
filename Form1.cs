@@ -123,15 +123,29 @@ namespace UIT_Snake
             button1.Enabled = false;
 
         }
-
+        int Press = 0;
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             Input.ChangeState(e.KeyCode, true);
+            if (e.KeyCode == Keys.P && Press==0)
+            {
+                timer1.Stop();
+                Press = 1;
+            }
+            else if(e.KeyCode == Keys.P && Press == 1)
+            {
+                timer1.Start();
+                Press = 0;
+            }
+            e.SuppressKeyPress = true;
+
+
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             Input.ChangeState(e.KeyCode, false);
+            e.SuppressKeyPress = true;
         }
 
         //    private Bitmap BackBuffer;
