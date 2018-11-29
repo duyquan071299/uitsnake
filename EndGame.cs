@@ -26,8 +26,16 @@ namespace UIT_Snake
         private void button1_Click(object sender, EventArgs e)
         {
             Input.keys.Clear();
-            form1.Screen = new GameScreen(form1.pictureBox1, 1);
-            form1.startTimer();
+            if (form1.Screen.GameMode == 1)
+            {
+                form1.Screen = new GameScreen(form1.pictureBox1, 1);
+                form1.startTimer(1);
+            }
+            else if(form1.Screen.GameMode==2)
+            {
+                form1.Screen = new GameScreen(form1.pictureBox1, 2);
+                form1.startTimer(2);
+            }
             this.Close();
         }
     }

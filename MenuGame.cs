@@ -22,20 +22,27 @@ namespace UIT_Snake
         {
             if (ParentForm == null)
                 return;
-
-          
             Label label2 = (ParentForm.Controls["label2"] as Label);
             label2.Hide();
             ParentForm.Screen = new GameScreen(ParentForm.pictureBox1, 1);
 
-            ParentForm.startTimer();
+            ParentForm.startTimer(1);
 
             this.Enabled = false;
             this.Hide();
-           
+          
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (ParentForm == null)
+                return;
+            ParentForm.Screen = new GameScreen(ParentForm.pictureBox1, 2);
 
+            ParentForm.startTimer(2);
 
+            this.Enabled = false;
+            this.Hide();
         }
     }
 }
