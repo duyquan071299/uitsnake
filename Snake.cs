@@ -92,8 +92,7 @@ namespace UIT_Snake
                         Alive = false;
                         return;
                     }
-                    
-
+ 
                     int max_tile_w = PlayZone.Width / 16;
                     int max_tile_h = PlayZone.Height / 16;
 
@@ -211,7 +210,12 @@ namespace UIT_Snake
                 if (b.SNAKE[0].X == this.SNAKE[i].X && b.SNAKE[0].Y == this.SNAKE[i].Y)
                 {
                     if (i == 0)
-                        return 0;//tie
+                    {
+                        if (b.SNAKE.Count == this.SNAKE.Count)
+                            return 0;//tie
+                        else if (b.SNAKE.Count > this.SNAKE.Count)
+                            return 2;// b win
+                    }
                     return 1;//a win
                 }
                 
@@ -221,7 +225,12 @@ namespace UIT_Snake
                 if (this.SNAKE[0].X == b.SNAKE[i].X && this.SNAKE[0].Y == b.SNAKE[i].Y)
                 {
                     if (i == 0)
-                        return 0;//tie
+                    {
+                        if (b.SNAKE.Count == this.SNAKE.Count)
+                            return 0;//tie
+                        else if (this.SNAKE.Count > b.SNAKE.Count)
+                            return 1;// a win
+                    }
                     return 2;//b win
                 }
                    

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using System.IO;
 
 namespace UIT_Snake
 {
@@ -42,6 +43,24 @@ namespace UIT_Snake
             }
         }
 
+        public void Sort(string[] a)
+        {
+            for (int i = 0; i < a.Length-1; i++)
+            {
+                if (a[i] == "")
+                    continue;
+                for (int j = i+1; j < a.Length ; j++)
+                {
+                    if (int.Parse(a[i]) > int.Parse(a[j]))
+                    {
+                        string temp = a[i];
+                        a[i] = a[j];
+                        a[j] = temp;
+                    }
+                }
+            }
+
+        }
      
 
         //Timer của chế độ một người chơi
@@ -55,21 +74,36 @@ namespace UIT_Snake
             {
                 timer1.Stop();
 
-                //// Giấu các thuộc tính của Screen
-                //this.label1.Hide();
-                //Screen.PlayZone.Hide();
-                //this.BackgroundImage = null;
-                //this.BackColor = Color.White;
-                ////Tạo nút Play Again
-                //Button PlayAgain = new Button();
-                //PlayAgain = button1;
-                //PlayAgain.Text = "Play again";
-                //Controls.Add(PlayAgain);
-                ////Tạo sự kiện Click để chơi lại từ đầu
-                //PlayAgain.Click += PlayAgain_Click;
-                //button1.Enabled = true;
-                //// Set thuộc tính GameOver = false
+                
+                string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\HighScore.txt";
 
+                string[] lines = System.IO.File.ReadAllLines(path);
+              
+                if (lines.Length <= 5)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(path, true))
+                    {
+                        file.WriteLine(Screen.snake.Score.ToString());
+                    }
+                }
+                else
+                {
+                    Sort(lines);
+                    for (int i=0;i<lines.Length;i++)
+                    {
+                        if (lines[i] == "")
+                            continue;
+                        if(Screen.snake.Score>int.Parse(lines[i]))
+                        {
+                            lines[i] = Screen.snake.Score.ToString();
+                            break;
+                        }
+                    }
+                    Sort(lines);
+                    System.IO.File.WriteAllLines(path, lines);
+                 
+                }
+          
                 Screen.GameOver = false;
                new EndGame(this).ShowDialog();
             }

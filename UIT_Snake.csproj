@@ -126,5 +126,8 @@
   <ItemGroup>
     <None Include="Resources\ob2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="HighScore.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
