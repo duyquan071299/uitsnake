@@ -90,6 +90,7 @@ namespace UIT_Snake
                         else if (direction == 3)
                             SNAKE[i].Y++;
                         Alive = false;
+                        SoundEffect DeadEffect = new SoundEffect(@"D:\Study\uitsnake\sound\lose.flac");
                         return;
                     }
                     
@@ -120,6 +121,8 @@ namespace UIT_Snake
                     {
                         food.isEaten = true;
                         SnakePart temp = new SnakePart();
+                        SoundEffect FoodEatenSound = new SoundEffect(@"D:\Study\uitsnake\sound\Eat.wav");
+
                         temp.X = SNAKE[SNAKE.Count - 1].X;
                         temp.Y = SNAKE[SNAKE.Count - 1].Y;
                         SNAKE.Add(temp);
