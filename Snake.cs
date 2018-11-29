@@ -162,14 +162,16 @@ namespace UIT_Snake
             { 
                 if (i == 0)
                 {
+                   
                     if (SNAKE[i].X > SNAKE[i + 1].X)//right
                          canvas.DrawImage(Image, SNAKE[i].X *16 , SNAKE[i].Y * 16, new Rectangle(4*16,0*16,16,16), GraphicsUnit.Pixel);
                     else if (SNAKE[i].Y > SNAKE[i + 1].Y)//down                             
                         canvas.DrawImage(Image, SNAKE[i].X * 16, SNAKE[i].Y * 16, new Rectangle(4*16, 1 * 16, 16, 16), GraphicsUnit.Pixel);
                     else if (SNAKE[i].X < SNAKE[i + 1].X)//left
-                   canvas.DrawImage(Image, SNAKE[i].X * 16, SNAKE[i].Y * 16, new Rectangle(3 * 16, 1 * 16, 16, 16), GraphicsUnit.Pixel);
+                         canvas.DrawImage(Image, SNAKE[i].X * 16, SNAKE[i].Y * 16, new Rectangle(3 * 16, 1 * 16, 16, 16), GraphicsUnit.Pixel);
                     else if (SNAKE[i].Y < SNAKE[i + 1].Y)//up
                         canvas.DrawImage(Image, SNAKE[i].X * 16, SNAKE[i].Y * 16, new Rectangle(3 * 16, 0 * 16, 16, 16), GraphicsUnit.Pixel);
+
                 }
                 else if (i == SNAKE.Count - 1)
                 {
