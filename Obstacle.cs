@@ -13,7 +13,6 @@ namespace UIT_Snake
     public class Obstacle
     {
         public int MapMode;
-        public List<SnakePart> a = new List<SnakePart>();
         public List<Rectangle> ob = new List<Rectangle>();
         public Region rg;
         public Obstacle() { }

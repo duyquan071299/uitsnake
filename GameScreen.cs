@@ -25,6 +25,8 @@ namespace UIT_Snake
         //người thắng trong chế độ hai người chơi
         public int Winner;
 
+        public int GameMode;
+
         public Obstacle obstacle;
 
         public bool GameOver;
@@ -32,7 +34,7 @@ namespace UIT_Snake
         public GameScreen() { }
         public GameScreen(PictureBox PlayZone,int Gamemode)
         {
-
+            GameMode = Gamemode;
             obstacle = new Obstacle(1);
             snake = new cSnake();
             snake.CreateSnake(9, 9);
@@ -41,15 +43,15 @@ namespace UIT_Snake
             food.GenerateFood(PlayZone);
             while (CheckAppear(snake.SNAKE)==1)
                 food.GenerateFood(PlayZone);
-            while (CheckAppear(obstacle.a)==1)
+            while (obstacle.rg.IsVisible(food.X * 16, food.Y * 16))
                 food.GenerateFood(PlayZone);
-            if (Gamemode == 2)
+            if (GameMode == 2)
             {
                 snake2 = new cSnake();
                 snake2.CreateSnake(17, 17);
                 while (CheckAppear(snake2.SNAKE) == 1)
                     food.GenerateFood(PlayZone);
-                while (CheckAppear(obstacle.a) == 1)
+                while (obstacle.rg.IsVisible(food.X * 16, food.Y * 16))
                     food.GenerateFood(PlayZone);
             }
             this.snake.Alive = true;

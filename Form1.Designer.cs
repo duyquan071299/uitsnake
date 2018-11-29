@@ -34,12 +34,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.MenuGame = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.menuGame1 = new UIT_Snake.MenuGame();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.MenuGame.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -86,16 +84,6 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             // 
-            // MenuGame
-            // 
-            this.MenuGame.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.MenuGame.Controls.Add(this.button2);
-            this.MenuGame.Controls.Add(this.button1);
-            this.MenuGame.Location = new System.Drawing.Point(260, 123);
-            this.MenuGame.Name = "MenuGame";
-            this.MenuGame.Size = new System.Drawing.Size(433, 196);
-            this.MenuGame.TabIndex = 1;
-            // 
             // button2
             // 
             this.button2.AutoSize = true;
@@ -124,7 +112,6 @@
             this.button1.Text = "1 Player";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // menuGame1
             // 
@@ -147,7 +134,6 @@
             this.ClientSize = new System.Drawing.Size(1114, 625);
             this.ControlBox = false;
             this.Controls.Add(this.menuGame1);
-           // this.Controls.Add(this.MenuGame);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
@@ -160,8 +146,6 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.MenuGame.ResumeLayout(false);
-            this.MenuGame.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,7 +158,6 @@
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel MenuGame;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private MenuGame menuGame1;

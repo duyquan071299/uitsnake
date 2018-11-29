@@ -28,10 +28,18 @@ namespace UIT_Snake
 
         }
 
-        public void startTimer()
+        public void startTimer(int Timer)
         {
-            timer1.Interval = 100;
-            timer1.Start();
+            if (Timer == 1)
+            {
+                timer1.Interval = 1000 / 20;
+                timer1.Start();
+            }
+            else if(Timer==2)
+            {
+                timer2.Interval = 1000 / 20;
+                timer2.Start();
+            }
         }
 
      
@@ -110,7 +118,7 @@ namespace UIT_Snake
             this.label1.Show();
             Screen = new GameScreen(pictureBox1, 1);
             Screen.PlayZone.Show();
-            timer1.Interval = 1000 / 10;
+            timer1.Interval = 150;
             timer1.Start();
             button1.Enabled = false;
 
@@ -124,23 +132,6 @@ namespace UIT_Snake
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             Input.ChangeState(e.KeyCode, false);
-        }
-
-
-   
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-            timer1.Interval = 100;
-            timer1.Start();
-
-            MenuGame.Enabled = false;
-            MenuGame.Hide();
-
-            label2.Hide();
-           Screen = new GameScreen(pictureBox1, 1);
-         
         }
 
         //    private Bitmap BackBuffer;
@@ -158,8 +149,8 @@ namespace UIT_Snake
             timer2.Interval = 1000 / 10;
             timer2.Start();
 
-            MenuGame.Enabled = false;
-            MenuGame.Hide();
+            //MenuGame.Enabled = false;
+            //MenuGame.Hide();
             Screen = new GameScreen(pictureBox1, 2);
         }
         Label a = new Label();
@@ -169,14 +160,9 @@ namespace UIT_Snake
             label2.Text = "Snake 2 Score: " + Screen.snake2.Score;
             if (Screen.GameOver == true)
             {
-                a.Text = Screen.Winner.ToString();
-                this.Controls.Add(a);
-                if (Input.Pressed(Keys.Space))
-                {
-                    timer2.Interval = 1000 / 10;
-                    timer2.Start();
-                    Screen = new GameScreen(pictureBox1, 2);
-                }
+                timer2.Stop();
+                Screen.GameOver = false;
+                new EndGame(this).ShowDialog();
             }
             else
             {

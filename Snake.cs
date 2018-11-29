@@ -75,23 +75,23 @@ namespace UIT_Snake
                             break;
                     }
                     //for (int j = 0; j < obstacles.a.Count ; j++)
-                   
+
 
 
                     // if (SNAKE[i].X == obstacles.a[j].X && SNAKE[i].Y == obstacles.a[j].Y)
-                    if (obstacles.rg.IsVisible(SNAKE[i].X*16, SNAKE[i].Y*16) )
-                        {
-                            if (direction == 0)
-                                SNAKE[i].Y--;
-                            else if (direction == 1)
-                                SNAKE[i].X++;
-                            else if (direction == 2)
-                                SNAKE[i].X--;
-                            else if (direction == 3)
-                                SNAKE[i].Y++;
-                            Alive = false;
-                            return;
-                        }
+                    if (obstacles.rg.IsVisible(SNAKE[i].X * 16, SNAKE[i].Y * 16))
+                    {
+                        if (direction == 0)
+                            SNAKE[i].Y--;
+                        else if (direction == 1)
+                            SNAKE[i].X++;
+                        else if (direction == 2)
+                            SNAKE[i].X--;
+                        else if (direction == 3)
+                            SNAKE[i].Y++;
+                        Alive = false;
+                        return;
+                    }
                     
 
                     int max_tile_w = PlayZone.Width / 16;
@@ -138,6 +138,7 @@ namespace UIT_Snake
                                 food.GenerateFood(PlayZone);
                             }
                        while(obstacles.rg.IsVisible(food.X * 16, food.Y * 16))
+                            food.GenerateFood(PlayZone);
                         Score++;
                     }
                  
