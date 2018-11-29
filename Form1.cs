@@ -18,6 +18,7 @@ namespace UIT_Snake
         public GameScreen Screen;
         //Tạo bitmap để lưu ảnh
         Bitmap Image;
+      //  SoundEffect BackgroundMusic = new SoundEffect(@"D:\Study\uitsnake\sound\background.mp3"); 
         public Form1()
         {
 
@@ -25,9 +26,7 @@ namespace UIT_Snake
             //Lưu ảnh các bộ phận và đồ ăn của rắn vào bitmap Image
             Image = new Bitmap(UIT_Snake.Properties.Resources.snake_graphics_1);
             this.menuGame1.ParentForm = this;
-
         }
-
         public void startTimer(int Timer)
         {
             if (Timer == 1)
@@ -42,10 +41,9 @@ namespace UIT_Snake
             }
         }
 
-     
 
-        //Timer của chế độ một người chơi
-        private void timer1_Tick_1(object sender, EventArgs e)
+    //Timer của chế độ một người chơi
+    private void timer1_Tick_1(object sender, EventArgs e)
         {
             //Label lưu điểm
             label1.Text = "Score: " + Screen.snake.Score;
@@ -127,11 +125,14 @@ namespace UIT_Snake
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             Input.ChangeState(e.KeyCode, true);
+            e.SuppressKeyPress = true;
+
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             Input.ChangeState(e.KeyCode, false);
+            e.SuppressKeyPress = true;
         }
 
         //    private Bitmap BackBuffer;
@@ -216,7 +217,10 @@ namespace UIT_Snake
 
             pictureBox1.Invalidate();
         }
- 
-        
+
+        private void menuGame1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
