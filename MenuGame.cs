@@ -20,6 +20,7 @@ namespace UIT_Snake
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Input.keys.Clear();
             if (ParentForm == null)
                 return;
             Label label2 = (ParentForm.Controls["label2"] as Label);
@@ -35,6 +36,7 @@ namespace UIT_Snake
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Input.keys.Clear();
             if (ParentForm == null)
                 return;
             ParentForm.Screen = new GameScreen(ParentForm.pictureBox1, 2);
