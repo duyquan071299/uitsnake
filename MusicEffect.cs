@@ -9,34 +9,28 @@ namespace UIT_Snake
 {
     class SoundEffect
     {
-        WindowsMediaPlayer sound;
-
+        WindowsMediaPlayer  _sound,_Eaten, _Dead;
+        public SoundEffect()
+        {
+        }
         public SoundEffect(string _filePath)
         {
-            sound = new WindowsMediaPlayer();
-            sound.URL = _filePath;
-            sound.controls.play();
+            _sound = new WindowsMediaPlayer();
+            _sound.URL = _filePath;
+            _sound.controls.play();
         }
 
-        public void Play()
+        public void Eat ()
         {
-            sound.controls.play();
+            _Eaten = new WindowsMediaPlayer();
+            _Eaten.URL = @"D:\Study\uitsnake\sound\Eat.wav";
+            _Eaten.controls.play();
         }
-
-        public void Stop()
+        public void Dead()
         {
-            sound.controls.stop();
-        }
-
-        public void Pause()
-        {
-            sound.controls.pause();
-        }
-
-        public void Resume()
-        {
-            if (sound.status == "Paused")
-                sound.controls.play();
+            _Dead = new WindowsMediaPlayer();
+            _Dead.URL = @"D:\Study\uitsnake\sound\lose.flac";
+            _Dead.controls.play();
         }
     }
 }

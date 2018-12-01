@@ -18,7 +18,7 @@ namespace UIT_Snake
         public List<SnakePart> SNAKE;
 
         public int Score;
-
+        SoundEffect Sound = new SoundEffect();
         public bool Alive;
         public void CreateSnake(int x, int y)
         {
@@ -90,7 +90,7 @@ namespace UIT_Snake
                         else if (direction == 3)
                             SNAKE[i].Y++;
                         Alive = false;
-                        SoundEffect DeadEffect = new SoundEffect(@"D:\Study\uitsnake\sound\lose.flac");
+                        Sound.Dead();
                         return;
                     }
                     
@@ -121,7 +121,7 @@ namespace UIT_Snake
                     {
                         food.isEaten = true;
                         SnakePart temp = new SnakePart();
-                        SoundEffect FoodEatenSound = new SoundEffect(@"D:\Study\uitsnake\sound\Eat.wav");
+                        Sound.Eat();
 
                         temp.X = SNAKE[SNAKE.Count - 1].X;
                         temp.Y = SNAKE[SNAKE.Count - 1].Y;
