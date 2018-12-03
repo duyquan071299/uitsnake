@@ -18,7 +18,7 @@ namespace UIT_Snake
         public GameScreen Screen;
         //Tạo bitmap để lưu ảnh
         Bitmap Image;
-      //  SoundEffect BackgroundMusic = new SoundEffect(@"D:\Study\uitsnake\sound\background.mp3"); 
+        SoundEffect BackgroundMusic = new SoundEffect(@"D:\Study\uitsnake\sound\background.mp3"); 
         public Form1()
         {
 
