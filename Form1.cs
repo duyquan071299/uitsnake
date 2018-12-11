@@ -33,13 +33,19 @@ namespace UIT_Snake
         {
             if (Timer == 1)
             {
-                timer1.Interval = 1000 / 20;
+                timer1.Interval = 1000 / 10;
                 timer1.Start();
             }
             else if(Timer==2)
             {
-                timer2.Interval = 1000 / 20;
+                timer2.Interval = 1000 / 10;
                 timer2.Start();
+            }
+            else if (Timer==3)
+            {
+                minute = 1;
+                second = 30;
+                timerClock.Start();
             }
         }
 
@@ -109,6 +115,7 @@ namespace UIT_Snake
             }
             else
             {
+                SetLevelOfSnake();
                 //Input là hàm lưu trạng thái của nút bấm
                 //Nếu S thì hướng đi sẽ là 0(đi xuống) 
                 if (Input.Pressed(Keys.S))
@@ -171,34 +178,61 @@ namespace UIT_Snake
                 timer1.Start();
                 Press = 0;
             }
+            else if(e.KeyCode==Keys.Q)
+            {
+                Application.Exit();
+            }
+            else if (e.KeyCode== Keys.K)
+            {
+
+                timer1.Interval = 100 / 2;
+            }
             e.SuppressKeyPress = true;
 
 
         }
-
+        
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             Input.ChangeState(e.KeyCode, false);
+            if (e.KeyCode == Keys.K)
+            {
+                timer1.Interval = 100 / 1;
+            }
             e.SuppressKeyPress = true;
+
         }
 
         //    private Bitmap BackBuffer;
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
 
-            //   BackBuffer = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             Screen.Draw(e.Graphics, Image);
-            //     e.Graphics.DrawImageUnscaled(BackBuffer, pictureBox1.Location.X, pictureBox1.Location.Y);
 
         }
+        private void SetLevelOfSnake()
+        {
+            switch (Screen.snake.Score)
+            {
+                case 5:
+                    timer1.Interval = 50;
+            
+                    break;
+                case 10:
+                    timer1.Interval = 60;
+                    break;
+                case 30:
+                    timer1.Interval = 70;
+                    break;
 
+            }
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             timer2.Interval = 1000 / 10;
             timer2.Start();
-
-            //MenuGame.Enabled = false;
-            //MenuGame.Hide();
+            timerClock.Start();
+            
             Screen = new GameScreen(pictureBox1, 2);
         }
         Label a = new Label();
@@ -264,7 +298,26 @@ namespace UIT_Snake
 
             pictureBox1.Invalidate();
         }
- 
+
+        private void ClockLabel_Click(object sender, EventArgs e)
+        {
+
+            //timerClock.Enabled = true;
+        }
+        int minute = 1;
+        int second = 30;
+        private void timerClock_Tick(object sender, EventArgs e)
+        {
+            
+            second--;
+            ClockLabel.Text = minute.ToString() + " : " + second.ToString();
+            if (second == 0)
+            {
+                second = 59;
+                minute--;
+            }
+
+        }
         
     }
 }

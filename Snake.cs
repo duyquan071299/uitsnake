@@ -43,6 +43,7 @@ namespace UIT_Snake
            });
 
         }
+        
         Point temp1;
         public void UpdateSnake(PictureBox PlayZone,Food food,Obstacle obstacles)
         {
@@ -114,7 +115,18 @@ namespace UIT_Snake
 
                     for (int j = 1; j < SNAKE.Count; j++)
                         if (SNAKE[i].X == SNAKE[j].X && SNAKE[i].Y == SNAKE[j].Y)
-                            Alive = false;
+                        {
+                            
+                           
+                            while (j!= SNAKE.Count)
+                            {
+                                SNAKE.RemoveAt(SNAKE.Count-1);
+                                Score--;
+                            }
+
+                            
+
+                        }
                     if (SNAKE[i].X == food.X && SNAKE[i].Y == food.Y)
                     {
                         food.isEaten = true;
@@ -139,6 +151,7 @@ namespace UIT_Snake
                        while(obstacles.rg.IsVisible(food.X * 16, food.Y * 16))
                             food.GenerateFood(PlayZone);
                         Score++;
+                        
                     }
                  
                 }

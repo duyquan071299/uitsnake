@@ -28,10 +28,11 @@ namespace UIT_Snake
             ParentForm.Screen = new GameScreen(ParentForm.pictureBox1, 1);
 
             ParentForm.startTimer(1);
-
+            
             this.Enabled = false;
             this.Hide();
-          
+            ParentForm.Controls["ClockLabel"].Hide();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -42,9 +43,14 @@ namespace UIT_Snake
             ParentForm.Screen = new GameScreen(ParentForm.pictureBox1, 2);
 
             ParentForm.startTimer(2);
-
+            ParentForm.startTimer(3);
             this.Enabled = false;
             this.Hide();
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

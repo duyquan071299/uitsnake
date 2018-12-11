@@ -36,6 +36,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.ClockLabel = new System.Windows.Forms.Label();
+            this.timerClock = new System.Windows.Forms.Timer(this.components);
             this.menuGame1 = new UIT_Snake.MenuGame();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -51,9 +53,9 @@
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.label1.Image = global::UIT_Snake.Properties.Resources.label_score;
-            this.label1.Location = new System.Drawing.Point(855, 171);
+            this.label1.Location = new System.Drawing.Point(855, 154);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(150, 71);
             this.label1.TabIndex = 2;
@@ -62,15 +64,15 @@
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label2.Location = new System.Drawing.Point(793, 368);
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.label2.Image = global::UIT_Snake.Properties.Resources.label_score;
+            this.label2.Location = new System.Drawing.Point(858, 273);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 19);
+            this.label2.Size = new System.Drawing.Size(147, 71);
             this.label2.TabIndex = 3;
             this.label2.Text = "Snake2_Score:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
             // 
@@ -113,6 +115,22 @@
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button1.UseVisualStyleBackColor = false;
             // 
+            // ClockLabel
+            // 
+            this.ClockLabel.BackColor = System.Drawing.Color.White;
+            this.ClockLabel.Location = new System.Drawing.Point(861, 403);
+            this.ClockLabel.Name = "ClockLabel";
+            this.ClockLabel.Size = new System.Drawing.Size(144, 65);
+            this.ClockLabel.TabIndex = 5;
+            this.ClockLabel.Click += new System.EventHandler(this.ClockLabel_Click);
+            // 
+            // timerClock
+            // 
+            this.timerClock.Enabled = true;
+            this.timerClock.Interval = 1000;
+            this.timerClock.Tick += new System.EventHandler(this.timerClock_Tick);
+
+            // 
             // menuGame1
             // 
             this.menuGame1.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -134,6 +152,7 @@
             this.ClientSize = new System.Drawing.Size(1114, 625);
             this.ControlBox = false;
             this.Controls.Add(this.menuGame1);
+            this.Controls.Add(this.ClockLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
@@ -147,7 +166,6 @@
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -161,6 +179,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         public MenuGame menuGame1;
+        private System.Windows.Forms.Label ClockLabel;
+        private System.Windows.Forms.Timer timerClock;
     }
 }
 

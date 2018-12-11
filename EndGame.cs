@@ -35,6 +35,7 @@ namespace UIT_Snake
             {
                 form1.Screen = new GameScreen(form1.pictureBox1, 2);
                 form1.startTimer(2);
+                form1.startTimer(3);
             }
             this.Close();
         }
