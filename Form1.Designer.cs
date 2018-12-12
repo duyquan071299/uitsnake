@@ -73,6 +73,7 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Snake2_Score:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // pictureBox1
             // 
@@ -126,10 +127,8 @@
             // 
             // timerClock
             // 
-            this.timerClock.Enabled = true;
             this.timerClock.Interval = 1000;
             this.timerClock.Tick += new System.EventHandler(this.timerClock_Tick);
-
             // 
             // menuGame1
             // 

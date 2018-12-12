@@ -28,7 +28,7 @@ namespace UIT_Snake
             this.menuGame1.ParentForm = this;
 
         }
-
+        
         public void startTimer(int Timer)
         {
             if (Timer == 1)
@@ -36,26 +36,27 @@ namespace UIT_Snake
                 timer1.Interval = 1000 / 10;
                 timer1.Start();
             }
-            else if(Timer==2)
+            else if (Timer == 2)
             {
                 timer2.Interval = 1000 / 10;
                 timer2.Start();
             }
-            else if (Timer==3)
+            else if (Timer == 3)
             {
                 minute = 1;
                 second = 30;
+                TimeOver = false;
                 timerClock.Start();
             }
         }
 
         public void Sort(string[] a)
         {
-            for (int i = 0; i < a.Length-1; i++)
+            for (int i = 0; i < a.Length - 1; i++)
             {
                 if (a[i] == "")
                     continue;
-                for (int j = i+1; j < a.Length ; j++)
+                for (int j = i + 1; j < a.Length; j++)
                 {
                     if (int.Parse(a[i]) > int.Parse(a[j]))
                     {
@@ -67,11 +68,12 @@ namespace UIT_Snake
             }
 
         }
-     
+
 
         //Timer của chế độ một người chơi
         private void timer1_Tick_1(object sender, EventArgs e)
         {
+
             //Label lưu điểm
             label1.Text = "Score: " + Screen.snake.Score;
             //Logic của game
@@ -80,11 +82,11 @@ namespace UIT_Snake
             {
                 timer1.Stop();
 
-                
+
                 string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\HighScore.txt";
 
                 string[] lines = System.IO.File.ReadAllLines(path);
-              
+
                 if (lines.Length <= 5)
                 {
                     using (System.IO.StreamWriter file = new System.IO.StreamWriter(path, true))
@@ -95,11 +97,11 @@ namespace UIT_Snake
                 else
                 {
                     Sort(lines);
-                    for (int i=0;i<lines.Length;i++)
+                    for (int i = 0; i < lines.Length; i++)
                     {
                         if (lines[i] == "")
                             continue;
-                        if(Screen.snake.Score>int.Parse(lines[i]))
+                        if (Screen.snake.Score > int.Parse(lines[i]))
                         {
                             lines[i] = Screen.snake.Score.ToString();
                             break;
@@ -107,11 +109,11 @@ namespace UIT_Snake
                     }
                     Sort(lines);
                     System.IO.File.WriteAllLines(path, lines);
-                 
+
                 }
-          
+
                 Screen.GameOver = false;
-               new EndGame(this).ShowDialog();
+                new EndGame(this).ShowDialog();
             }
             else
             {
@@ -143,7 +145,7 @@ namespace UIT_Snake
                     if (Screen.snake.SNAKE[0].Y == Screen.snake.SNAKE[1].Y)
                         Screen.snake.direction = 3;
                 }
-               
+
                 //Sau khi thay đổi hướng Update lại màn hình chơi
                 Screen.Update();
             }
@@ -164,25 +166,26 @@ namespace UIT_Snake
             button1.Enabled = false;
 
         }
+        
         int Press = 0;
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             Input.ChangeState(e.KeyCode, true);
-            if (e.KeyCode == Keys.P && Press==0)
+            if (e.KeyCode == Keys.P && Press == 0)
             {
                 timer1.Stop();
                 Press = 1;
             }
-            else if(e.KeyCode == Keys.P && Press == 1)
+            else if (e.KeyCode == Keys.P && Press == 1)
             {
                 timer1.Start();
                 Press = 0;
             }
-            else if(e.KeyCode==Keys.Q)
+            else if (e.KeyCode == Keys.Escape )
             {
                 Application.Exit();
             }
-            else if (e.KeyCode== Keys.K)
+            else if (e.KeyCode == Keys.Space)
             {
 
                 timer1.Interval = 100 / 2;
@@ -191,11 +194,14 @@ namespace UIT_Snake
 
 
         }
+        public static int minute = -1;
+        public static int second = -1;
         
+
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             Input.ChangeState(e.KeyCode, false);
-            if (e.KeyCode == Keys.K)
+            if (e.KeyCode == Keys.Space)
             {
                 timer1.Interval = 100 / 1;
             }
@@ -304,20 +310,34 @@ namespace UIT_Snake
 
             //timerClock.Enabled = true;
         }
-        int minute = 1;
-        int second = 30;
+        static public bool TimeOver = false;        
         private void timerClock_Tick(object sender, EventArgs e)
         {
             
             second--;
+            if (minute == 0 && second == 0)
+            {
+                timerClock.Stop();
+                TimeOver = true;
+
+            }
+            else
+            {
+                TimeOver = false;
+            }
             ClockLabel.Text = minute.ToString() + " : " + second.ToString();
             if (second == 0)
             {
                 second = 59;
                 minute--;
             }
+           
+        }
+      
+
+        private void label2_Click(object sender, EventArgs e)
+        {
 
         }
-        
     }
 }

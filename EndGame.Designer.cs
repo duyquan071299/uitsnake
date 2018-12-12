@@ -35,13 +35,16 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("MS UI Gothic", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(203, 9);
+            this.label2.Font = new System.Drawing.Font("MS UI Gothic", 20.2F);
+            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label2.Location = new System.Drawing.Point(205, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(248, 48);
+            this.label2.Size = new System.Drawing.Size(175, 34);
             this.label2.TabIndex = 1;
             this.label2.Text = "Game Over";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button1
             // 

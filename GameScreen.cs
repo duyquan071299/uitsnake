@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace UIT_Snake
 {
     //Class màn hình của game chứa các thuộc tính cơ bản như là rắn, đồ ăn, timer của trò chơi, khu vực di chuyển của rắn,..
-   public class GameScreen
+   public class GameScreen : Form1
     {
         //rắn thứ 1
         public cSnake snake;
@@ -29,7 +29,7 @@ namespace UIT_Snake
 
         public Obstacle obstacle;
 
-        public bool GameOver;
+        public bool GameOver =false;
         //timer của trò chơi
         public GameScreen() { }
         public GameScreen(PictureBox PlayZone,int Gamemode)
@@ -72,35 +72,61 @@ namespace UIT_Snake
             if (snake2 != null)
                 snake2.UpdateSnake(PlayZone,food,obstacle);
             snake.UpdateSnake(PlayZone ,food,obstacle);
-
-            if (snake.Alive == false)
+            if (GameMode == 1)
             {
-                GameOver = (!snake.Alive);
-                Winner = 2;
+                if (snake.Alive == false)
+                {
+                    GameOver = (!snake.Alive);
+                    Winner = -1;
+                    return;
+                }
             }
-            else if (snake2 != null && snake.Alive == true)
+            if (GameMode == 2)
             {
-                if (snake.SnakeFight(snake2) == 1 && snake.Alive == true)
+                if (TimeOver == true)
                 {
                     GameOver = true;
-                    Winner = 1;
+                    if (snake.Score > snake2.Score)
+                        Winner = 1;
+                    else if (snake.Score < snake2.Score)
+                        Winner = 2;
+                    else
+                        Winner = 0;
+                    return;
                 }
-                else if(snake.SnakeFight(snake2)==2 && snake.Alive == true)
+                if (snake.Alive == false)
                 {
                     GameOver = true;
                     Winner = 2;
+                    return;
                 }
-                else if(snake.SnakeFight(snake2)==0 && snake.Alive == true)
+                else if (snake2 != null)
                 {
-                    GameOver = true;
-                    Winner = 0;
+                    if (snake.SnakeFight(snake2) == 1 )
+                    {
+                        GameOver = true;
+                        Winner = 1;
+                    }
+                    else if (snake.SnakeFight(snake2) == 2)
+                    {
+                        GameOver = true;
+                        Winner = 2;
+                    }
+                    else if (snake.SnakeFight(snake2) == 0 )
+                    {
+                        GameOver = true;
+                        Winner = 0;
+                    }
+                    else if (!snake2.Alive)
+                    {
+                        GameOver = true;
+                        Winner = 1;
+                        return;    
+                    }
+                    
+                    
+
                 }
-                else
-                {
-                    GameOver = (!snake2.Alive);
-                    Winner = 1;
-                }
-                
             }
         }
 

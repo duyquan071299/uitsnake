@@ -19,6 +19,21 @@ namespace UIT_Snake
             InitializeComponent();
             form1 = frm;
             label2.Text += ("\n  Score:" + form1.Screen.snake.Score.ToString());
+            switch (form1.Screen.Winner)
+            {
+                case -1:
+                    break;
+                case 0:
+                    label2.Text += (" HOA  ");
+                    break;
+                case 1:
+                    label2.Text += (" Player 1 WIN ");
+                    break;
+                case 2:
+                    label2.Text += (" Player 2 WIN ");
+                    break;
+            }
+            
         }
 
 
@@ -36,6 +51,7 @@ namespace UIT_Snake
                 form1.Screen = new GameScreen(form1.pictureBox1, 2);
                 form1.startTimer(2);
                 form1.startTimer(3);
+            
             }
             this.Close();
         }
