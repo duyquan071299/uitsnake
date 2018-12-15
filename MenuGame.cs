@@ -26,9 +26,8 @@ namespace UIT_Snake
             Label label2 = (ParentForm.Controls["label2"] as Label);
             label2.Hide();
             ParentForm.Screen = new GameScreen(ParentForm.pictureBox1, 1);
-
+            ParentForm.Gamemode = 1;
             ParentForm.startTimer(1);
-            
             this.Enabled = false;
             this.Hide();
             ParentForm.Controls["ClockLabel"].Hide();
@@ -41,7 +40,7 @@ namespace UIT_Snake
             if (ParentForm == null)
                 return;
             ParentForm.Screen = new GameScreen(ParentForm.pictureBox1, 2);
-
+            ParentForm.Gamemode = 2;
             ParentForm.startTimer(2);
             ParentForm.startTimer(3);
             this.Enabled = false;

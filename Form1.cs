@@ -18,27 +18,28 @@ namespace UIT_Snake
         //Tạo màn hình chơi của game
         public GameScreen Screen;
         //Tạo bitmap để lưu ảnh
-        Bitmap Image;
+         Bitmap Image;
+        public int Gamemode;
+        public int SnakeSpeed;
+        public int Levelflag = 0;
         public Form1()
         {
-
             InitializeComponent();
             //Lưu ảnh các bộ phận và đồ ăn của rắn vào bitmap Image
             Image = new Bitmap(UIT_Snake.Properties.Resources.snake_graphics_1);
             this.menuGame1.ParentForm = this;
-
         }
         
         public void startTimer(int Timer)
         {
             if (Timer == 1)
             {
-                timer1.Interval = 1000 / 10;
+                timer1.Interval = SnakeSpeed= 100;
                 timer1.Start();
             }
             else if (Timer == 2)
             {
-                timer2.Interval = 1000 / 10;
+                timer2.Interval = SnakeSpeed = 100;
                 timer2.Start();
             }
             else if (Timer == 3)
@@ -81,8 +82,6 @@ namespace UIT_Snake
             if (Screen.GameOver == true)
             {
                 timer1.Stop();
-
-
                 string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\HighScore.txt";
 
                 string[] lines = System.IO.File.ReadAllLines(path);
@@ -109,9 +108,7 @@ namespace UIT_Snake
                     }
                     Sort(lines);
                     System.IO.File.WriteAllLines(path, lines);
-
                 }
-
                 Screen.GameOver = false;
                 new EndGame(this).ShowDialog();
             }
@@ -151,34 +148,29 @@ namespace UIT_Snake
             }
             //Invalidate trigger sự kiện paint của form
             pictureBox1.Invalidate();
-
-
         }
-
-        private void PlayAgain_Click(object sender, EventArgs e)
-        {
-            this.BackgroundImage = UIT_Snake.Properties.Resources.Snake_main;
-            this.label1.Show();
-            Screen = new GameScreen(pictureBox1, 1);
-            Screen.PlayZone.Show();
-            timer1.Interval = 150;
-            timer1.Start();
-            button1.Enabled = false;
-
-        }
-        
         int Press = 0;
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             Input.ChangeState(e.KeyCode, true);
             if (e.KeyCode == Keys.P && Press == 0)
             {
-                timer1.Stop();
+                if (Gamemode == 1)
+                {
+                    timer1.Stop();
+                }
+                else
+                    timer2.Stop();
                 Press = 1;
             }
             else if (e.KeyCode == Keys.P && Press == 1)
             {
-                timer1.Start();
+                if (Gamemode == 1)
+                {
+                    timer1.Start();
+                }
+                else
+                    timer2.Start();
                 Press = 0;
             }
             else if (e.KeyCode == Keys.Escape )
@@ -188,11 +180,9 @@ namespace UIT_Snake
             else if (e.KeyCode == Keys.Space)
             {
 
-                timer1.Interval = 100 / 2;
+                timer1.Interval = SnakeSpeed-40;
             }
             e.SuppressKeyPress = true;
-
-
         }
         public static int minute = -1;
         public static int second = -1;
@@ -203,13 +193,11 @@ namespace UIT_Snake
             Input.ChangeState(e.KeyCode, false);
             if (e.KeyCode == Keys.Space)
             {
-                timer1.Interval = 100 / 1;
+                timer1.Interval = SnakeSpeed;
             }
             e.SuppressKeyPress = true;
 
         }
-
-        //    private Bitmap BackBuffer;
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
 
@@ -221,25 +209,29 @@ namespace UIT_Snake
             switch (Screen.snake.Score)
             {
                 case 5:
-                    timer1.Interval = 50;
-            
+                    if (Levelflag == 0)
+                    {
+                        timer1.Interval = SnakeSpeed -= 20;
+                        Levelflag = 1;
+                    }
                     break;
                 case 10:
-                    timer1.Interval = 60;
+                    if (Levelflag == 1)
+                    {
+                        timer1.Interval = SnakeSpeed -= 20;
+                        Levelflag = 2;
+                    }
                     break;
                 case 30:
-                    timer1.Interval = 70;
+                    if (Levelflag == 3)
+                    {
+                        timer1.Interval = SnakeSpeed -= 20;
+                        Levelflag = 0;
+                    }
+                    timer1.Interval = SnakeSpeed-=20;
                     break;
 
             }
-        }
-        private void button2_Click(object sender, EventArgs e)
-        {
-            timer2.Interval = 1000 / 10;
-            timer2.Start();
-            timerClock.Start();
-            
-            Screen = new GameScreen(pictureBox1, 2);
         }
         Label a = new Label();
         private void timer2_Tick(object sender, EventArgs e)
@@ -289,10 +281,7 @@ namespace UIT_Snake
                 else if (Input.Pressed(Keys.Right))
                 {
                     if (Screen.snake2.direction == -1 || Screen.snake2.SNAKE[0].X == Screen.snake2.SNAKE[1].X)
-
                         Screen.snake2.direction = 2;
-
-
                 }
                 else if (Input.Pressed(Keys.Up))
                 {
@@ -304,16 +293,9 @@ namespace UIT_Snake
 
             pictureBox1.Invalidate();
         }
-
-        private void ClockLabel_Click(object sender, EventArgs e)
-        {
-
-            //timerClock.Enabled = true;
-        }
         static public bool TimeOver = false;        
         private void timerClock_Tick(object sender, EventArgs e)
         {
-            
             second--;
             if (minute == 0 && second == 0)
             {
@@ -331,13 +313,7 @@ namespace UIT_Snake
                 second = 59;
                 minute--;
             }
-           
         }
-      
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

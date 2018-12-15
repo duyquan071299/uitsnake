@@ -73,7 +73,6 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Snake2_Score:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // pictureBox1
             // 
@@ -87,35 +86,6 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             // 
-            // button2
-            // 
-            this.button2.AutoSize = true;
-            this.button2.Location = new System.Drawing.Point(488, 272);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 27);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "2  Player";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.BackgroundImage = global::UIT_Snake.Properties.Resources.Button;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(468, 167);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 75);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "1 Player";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // ClockLabel
             // 
             this.ClockLabel.BackColor = System.Drawing.Color.White;
@@ -123,7 +93,6 @@
             this.ClockLabel.Name = "ClockLabel";
             this.ClockLabel.Size = new System.Drawing.Size(144, 65);
             this.ClockLabel.TabIndex = 5;
-            this.ClockLabel.Click += new System.EventHandler(this.ClockLabel_Click);
             // 
             // timerClock
             // 
