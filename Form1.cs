@@ -179,7 +179,6 @@ namespace UIT_Snake
             }
             else if (e.KeyCode == Keys.Space)
             {
-
                 timer1.Interval = SnakeSpeed-40;
             }
             e.SuppressKeyPress = true;
@@ -206,32 +205,39 @@ namespace UIT_Snake
         }
         private void SetLevelOfSnake()
         {
-            switch (Screen.snake.Score)
+            if(Screen.snake.Score<5)
             {
-                case 5:
-                    if (Levelflag == 0)
-                    {
-                        timer1.Interval = SnakeSpeed -= 20;
-                        Levelflag = 1;
-                    }
-                    break;
-                case 10:
-                    if (Levelflag == 1)
-                    {
-                        timer1.Interval = SnakeSpeed -= 20;
-                        Levelflag = 2;
-                    }
-                    break;
-                case 30:
-                    if (Levelflag == 3)
-                    {
-                        timer1.Interval = SnakeSpeed -= 20;
-                        Levelflag = 0;
-                    }
-                    timer1.Interval = SnakeSpeed-=20;
-                    break;
-
+                if (Levelflag != 1)
+                {
+                    timer1.Interval = SnakeSpeed = 100;
+                    Levelflag = 1;
+                }
             }
+            else if(Screen.snake.Score>=5 && Screen.snake.Score<10)
+            {
+                if (Levelflag != 2)
+                {
+                    timer1.Interval = SnakeSpeed = 80;
+                    Levelflag = 2;
+                }
+            }
+            else if(Screen.snake.Score>=10 && Screen.snake.Score<30)
+            {
+                if (Levelflag != 3)
+                {
+                    timer1.Interval = SnakeSpeed = 60;
+                    Levelflag = 3;
+                }
+            }
+            else if (Screen.snake.Score >=30)
+            {
+                if (Levelflag != 4)
+                {
+                    timer1.Interval = SnakeSpeed = 50;
+                    Levelflag = 4;
+                }
+            }
+
         }
         Label a = new Label();
         private void timer2_Tick(object sender, EventArgs e)

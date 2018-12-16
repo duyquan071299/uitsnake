@@ -35,9 +35,9 @@ namespace UIT_Snake
         public GameScreen(PictureBox PlayZone,int Gamemode)
         {
             GameMode = Gamemode;
-            obstacle = new Obstacle(1);
+            obstacle = new Obstacle(2);
             snake = new cSnake();
-            snake.CreateSnake(9, 9);
+            snake.CreateSnake(9, 10);
             this.PlayZone = PlayZone;
             this.food = new Food();
             food.GenerateFood(PlayZone);

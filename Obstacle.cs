@@ -39,24 +39,48 @@ namespace UIT_Snake
             }
             else if(MapMode==2)
             {
-            
+
+                Rectangle ob1 = new Rectangle(5 * 16, 4* 16, 400, 16);
+                ob.Add(ob1);
+                ob1 = new Rectangle(5 * 16, 9 * 16, 400, 16);
+                ob.Add(ob1);
+                ob1 = new Rectangle(5 * 16, 14 * 16, 400, 16);
+                ob.Add(ob1);
+                ob1 = new Rectangle(5 * 16, 19 * 16, 400, 16);
+                ob.Add(ob1);
+                ob1 = new Rectangle(5 * 16, 24 * 16, 400, 16);
+                ob.Add(ob1);
+                rg = new Region(ob[0]);
+                Region rg1 = new Region(ob[1]);
+                Region rg2 = new Region(ob[2]);
+                Region rg3 = new Region(ob[3]);
+                Region rg4 = new Region(ob[4]);
+                rg.Union(rg1);
+                rg.Union(rg2);
+                rg.Union(rg3);
+                rg.Union(rg4);
 
 
             }
         }
         public void DrawObstacle(Graphics canvas)
         {
+            if (MapMode == 1)
+            {
+                canvas.DrawImage(UIT_Snake.Properties.Resources.ob1, ob[0]);
+                canvas.DrawImage(UIT_Snake.Properties.Resources.ob1, ob[1]);
+                canvas.DrawImage(UIT_Snake.Properties.Resources.ob2, ob[2]);
+                canvas.DrawImage(UIT_Snake.Properties.Resources.ob2, ob[3]);
+            }
+            else if(MapMode==2)
+            {
+                canvas.DrawImage(UIT_Snake.Properties.Resources.ob1, ob[0]);
+                canvas.DrawImage(UIT_Snake.Properties.Resources.ob1, ob[1]);
+                canvas.DrawImage(UIT_Snake.Properties.Resources.ob1, ob[2]);
+                canvas.DrawImage(UIT_Snake.Properties.Resources.ob1, ob[3]);
+                canvas.DrawImage(UIT_Snake.Properties.Resources.ob1, ob[4]);
+            }
 
-            canvas.DrawImage(UIT_Snake.Properties.Resources.ob1, ob[0]);
-            canvas.DrawImage(UIT_Snake.Properties.Resources.ob1, ob[1]);
-            canvas.DrawImage(UIT_Snake.Properties.Resources.ob2, ob[2]);
-            canvas.DrawImage(UIT_Snake.Properties.Resources.ob2, ob[3]);
-
-
-            //for(int i=0;i<a.Count;i++)
-            //{
-            //    canvas.DrawImage(Image,a[i].X*16, a[i].Y*16,16,16);
-            //}
         }
 
 
