@@ -20,16 +20,64 @@ namespace UIT_Snake
         //Tạo bitmap để lưu ảnh
          Bitmap Image;
         public int Gamemode;
+        public string NewName;
         public int SnakeSpeed;
         public int Levelflag = 0;
+        public PlayerInfo[] List;
+        public int count = 0;
         public Form1()
         {
             InitializeComponent();
             //Lưu ảnh các bộ phận và đồ ăn của rắn vào bitmap Image
             Image = new Bitmap(UIT_Snake.Properties.Resources.snake_graphics_1);
             this.menuGame1.ParentForm = this;
+            this.highScore1.ParentForm = this;
+            highScore1.Hide();
+            LoadData();
+           
         }
-        
+
+        public void ShowHighScore()
+        {
+            highScore1.Show();
+            highScore1.BringToFront();
+        }
+
+        public string FileLocation = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\HighScore.txt";
+        public  void LoadData()
+        {
+            List = new PlayerInfo[5] ;
+            string[] lines = System.IO.File.ReadAllLines(FileLocation);
+            
+            StreamReader sr = new StreamReader(FileLocation);
+            string line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] Values = line.Split('|');
+           
+                List[count++] = new PlayerInfo(Values[0], int.Parse(Values[1]), int.Parse(Values[2]));
+                
+            }
+            sr.Close();
+            for (int i = 0; i < count-1; i++)
+                for (int j = 0; j < count - i-1; j++)
+                    if (List[j].Score < List[j + 1].Score)
+                    {
+                        PlayerInfo temp = List[j];
+                        List[j] = List[j + 1];
+                        List[j + 1] = temp;
+                    }
+        }
+
+        public void SaveData(PlayerInfo[] List)
+        {
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(FileLocation))
+            {
+                for (int i = 0; i < count; i++)
+                    file.WriteLine(List[i].Name + "|" + List[i].Score + "|" + List[i].Rank);
+            }
+        }
+
         public void startTimer(int Timer)
         {
             if (Timer == 1)
@@ -44,30 +92,12 @@ namespace UIT_Snake
             }
             else if (Timer == 3)
             {
-                minute = 1;
-                second = 30;
-                TimeOver = false;
+                minute = 0;
+                second = 29;
+                Screen.TimeOver = false;
                 timerClock.Start();
+                ClockLabel.Text = minute.ToString() + " : " + (second+1).ToString();
             }
-        }
-
-        public void Sort(string[] a)
-        {
-            for (int i = 0; i < a.Length - 1; i++)
-            {
-                if (a[i] == "")
-                    continue;
-                for (int j = i + 1; j < a.Length; j++)
-                {
-                    if (int.Parse(a[i]) > int.Parse(a[j]))
-                    {
-                        string temp = a[i];
-                        a[i] = a[j];
-                        a[j] = temp;
-                    }
-                }
-            }
-
         }
 
 
@@ -82,35 +112,34 @@ namespace UIT_Snake
             if (Screen.GameOver == true)
             {
                 timer1.Stop();
-                string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\HighScore.txt";
-
-                string[] lines = System.IO.File.ReadAllLines(path);
-
-                if (lines.Length <= 5)
+                new EndGame(this).ShowDialog();
+                if (count < 5)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(path, true))
-                    {
-                        file.WriteLine(Screen.snake.Score.ToString());
-                    }
+                    List[count++] = new PlayerInfo(NewName, Screen.snake.Score, count+1);
+                    SaveData(List);
                 }
                 else
                 {
-                    Sort(lines);
-                    for (int i = 0; i < lines.Length; i++)
+                  for(int i=count-1;i>=0;i--)
                     {
-                        if (lines[i] == "")
-                            continue;
-                        if (Screen.snake.Score > int.Parse(lines[i]))
+                        if(Screen.snake.Score<=List[i].Score)
                         {
-                            lines[i] = Screen.snake.Score.ToString();
-                            break;
+                            if((i)!=count-1)
+                            {
+                                List[i + 1].Score = Screen.snake.Score;
+                                List[i + 1].Name = NewName;
+                                SaveData(List);
+                                return;
+                            }
+                            else
+                            {
+                                return;
+                            }
                         }
                     }
-                    Sort(lines);
-                    System.IO.File.WriteAllLines(path, lines);
                 }
                 Screen.GameOver = false;
-                new EndGame(this).ShowDialog();
+                
             }
             else
             {
@@ -199,8 +228,11 @@ namespace UIT_Snake
         }
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-
-            Screen.Draw(e.Graphics, Image);
+            try
+            {
+                Screen.Draw(e.Graphics, Image);
+            }
+            catch { }
 
         }
         private void SetLevelOfSnake()
@@ -299,22 +331,19 @@ namespace UIT_Snake
 
             pictureBox1.Invalidate();
         }
-        static public bool TimeOver = false;        
+               
         private void timerClock_Tick(object sender, EventArgs e)
         {
-            second--;
             if (minute == 0 && second == 0)
             {
                 timerClock.Stop();
-                TimeOver = true;
-
-            }
-            else
-            {
-                TimeOver = false;
+                Screen.TimeOver = true;
+                ClockLabel.Text = minute.ToString() + " : " + second.ToString();
+                return;
             }
             ClockLabel.Text = minute.ToString() + " : " + second.ToString();
-            if (second == 0)
+            second--;
+            if (second == 0&&minute!=0)
             {
                 second = 59;
                 minute--;

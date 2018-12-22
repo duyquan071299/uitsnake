@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace UIT_Snake
 {
     //Class màn hình của game chứa các thuộc tính cơ bản như là rắn, đồ ăn, timer của trò chơi, khu vực di chuyển của rắn,..
-   public class GameScreen : Form1
+   public class GameScreen
     {
         //rắn thứ 1
         public cSnake snake;
@@ -28,6 +28,9 @@ namespace UIT_Snake
         public int GameMode;
 
         public Obstacle obstacle;
+
+        //Clock count
+        public bool TimeOver = false;
 
         public bool GameOver =false;
         //timer của trò chơi

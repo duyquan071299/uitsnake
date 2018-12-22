@@ -18,24 +18,36 @@ namespace UIT_Snake
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Input.keys.Clear();
-            if (ParentForm == null)
+            NameRegister a = new NameRegister(this);
+            a.ShowDialog();
+            if (a.Cancle == false)
+            {
+                ParentForm.NewName = a.GetTextBox();
+                Input.keys.Clear();
+                if (ParentForm == null)
+                    return;
+                Label label2 = (ParentForm.Controls["label2"] as Label);
+                label2.Hide();
+                ParentForm.Screen = new GameScreen(ParentForm.pictureBox1, 1);
+                ParentForm.Gamemode = 1;
+                ParentForm.startTimer(1);
+                this.Enabled = false;
+                this.Hide();
+                ParentForm.Controls["ClockLabel"].Hide();
+                a.Dispose();
+            }
+            else
+            {
+                a.Dispose();
                 return;
-            Label label2 = (ParentForm.Controls["label2"] as Label);
-            label2.Hide();
-            ParentForm.Screen = new GameScreen(ParentForm.pictureBox1, 1);
-            ParentForm.Gamemode = 1;
-            ParentForm.startTimer(1);
-            this.Enabled = false;
-            this.Hide();
-            ParentForm.Controls["ClockLabel"].Hide();
-            
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
+            ParentForm.Controls["ClockLabel"].Show();
             Input.keys.Clear();
             if (ParentForm == null)
                 return;
@@ -47,7 +59,13 @@ namespace UIT_Snake
             this.Hide();
         }
 
-        private void ExitButton_Click(object sender, EventArgs e)
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            ParentForm.ShowHighScore();
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }

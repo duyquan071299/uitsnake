@@ -44,7 +44,9 @@ namespace UIT_Snake
 
         }
         Point temp1;
+        
         public int temp;
+        public int temp2;
         //public int State=1;
         //public int LastDirection = -1;
         public void UpdateSnake(PictureBox PlayZone,Food food,Obstacle obstacles)
@@ -95,25 +97,38 @@ namespace UIT_Snake
  
                     int max_tile_w = PlayZone.Width / 16;
                     int max_tile_h = PlayZone.Height / 16;
-                   // temp = max_tile_w;
+                    temp = max_tile_w;
+                    temp2 = max_tile_h;
 
                     if (SNAKE[i].X < 0 || SNAKE[i].X > max_tile_w-1 || SNAKE[i].Y < 0 || SNAKE[i].Y > max_tile_h-1 )
                     {
-                        if (direction == 0)
-                            SNAKE[i].Y--;
-                        else if (direction == 1)
-                            SNAKE[i].X++;
-                        else if (direction == 2)
-                            SNAKE[i].X--;
-                        else if (direction == 3)
-                            SNAKE[i].Y++;
-                        Alive = false;
-                        return;
-                        //if (direction==1)
-                        //{
-                        //    SNAKE[i].X = max_tile_w - 1;
-                        //    State = 2;
-                        //}
+                        //if (direction == 0)
+                        //    SNAKE[i].Y--;
+                        //else if (direction == 1)
+                        //    SNAKE[i].X++;
+                        //else if (direction == 2)
+                        //    SNAKE[i].X--;
+                        //else if (direction == 3)
+                        //    SNAKE[i].Y++;
+                        //Alive = false;
+                        //return;
+                        if (direction == 1)
+                        {
+                            SNAKE[i].X = (max_tile_w-1 );
+
+                        }
+                        else if(direction==2)
+                        {
+                            SNAKE[i].X = 0;
+                        }
+                        else if(direction==0)
+                        {
+                            SNAKE[i].Y = 0;
+                        }
+                        else if(direction==3)
+                        {
+                            SNAKE[i].Y = max_tile_h - 1;
+                        }
                     }
 
 
@@ -174,42 +189,47 @@ namespace UIT_Snake
             {
                 if (i == 0)
                 {
-
-                    if (SNAKE[i].X > SNAKE[i + 1].X )//right
-                        canvas.DrawImage(Image, SNAKE[i].X * 16, SNAKE[i].Y * 16, new Rectangle(4 * 16, 0 * 16, 16, 16), GraphicsUnit.Pixel);
-                    else if (SNAKE[i].Y > SNAKE[i + 1].Y)//down                             
+                    if (SNAKE[i].X > SNAKE[i + 1].X &&(SNAKE[i + 1].X != 0||SNAKE[i].X!=temp-1)|| SNAKE[i+1].X == temp - 1 && SNAKE[i].X == 0)//right
+                        canvas.DrawImage(Image,SNAKE[i].X * 16, SNAKE[i].Y * 16, new Rectangle(4 * 16, 0 * 16, 16, 16), GraphicsUnit.Pixel);
+                    else if (SNAKE[i].Y > SNAKE[i + 1].Y && (SNAKE[i+1].Y != 0 || SNAKE[i].Y != temp2 - 1) || SNAKE[i + 1].Y == temp2 - 1 && SNAKE[i].Y == 0)//down                             
                         canvas.DrawImage(Image, SNAKE[i].X * 16, SNAKE[i].Y * 16, new Rectangle(4 * 16, 1 * 16, 16, 16), GraphicsUnit.Pixel);
-                    else if (SNAKE[i].X < SNAKE[i + 1].X )//left
-                        canvas.DrawImage(Image, SNAKE[i].X * 16, SNAKE[i].Y * 16, new Rectangle(3 * 16, 1 * 16, 16, 16), GraphicsUnit.Pixel);
-                    else if (SNAKE[i].Y < SNAKE[i + 1].Y)//up
+                    else if (SNAKE[i].X < SNAKE[i + 1].X &&(SNAKE[i+1].X!=temp-1 ||SNAKE[i].X!=0) || SNAKE[i].X==temp-1 &&SNAKE[i+1].X==0)//left
+                        canvas.DrawImage(Image, (SNAKE[i].X) * 16, SNAKE[i].Y * 16, new Rectangle(3 * 16, 1 * 16, 16, 16), GraphicsUnit.Pixel);
+                    else if (SNAKE[i].Y < SNAKE[i + 1].Y || SNAKE[i].Y == temp2 - 1 && SNAKE[i+1].Y == 0)//up
                         canvas.DrawImage(Image, SNAKE[i].X * 16, SNAKE[i].Y * 16, new Rectangle(3 * 16, 0 * 16, 16, 16), GraphicsUnit.Pixel);
 
                 }
                 else if (i == SNAKE.Count - 1)
                 {
-                    if (SNAKE[i].X > SNAKE[i - 1].X )//left
-                        canvas.DrawImage(Image, SNAKE[i].X * 16, SNAKE[i].Y * 16, new Rectangle(3 * 16, 3 * 16, 16, 16), GraphicsUnit.Pixel);
-                    else if (SNAKE[i].Y > SNAKE[i - 1].Y)//down
-                        canvas.DrawImage(Image, SNAKE[i].X * 16, SNAKE[i].Y * 16, new Rectangle(3 * 16, 2 * 16, 16, 16), GraphicsUnit.Pixel);
-                    else if ((SNAKE[i].X < SNAKE[i - 1].X))//right
+                    if (SNAKE[i].X < SNAKE[i - 1].X&&(SNAKE[i].X != 0 || SNAKE[i-1].X != temp - 1)|| SNAKE[i-1].X == 0 && SNAKE[i].X == temp - 1)//right
                         canvas.DrawImage(Image, SNAKE[i].X * 16, SNAKE[i].Y * 16, new Rectangle(4 * 16, 2 * 16, 16, 16), GraphicsUnit.Pixel);
-                    else if (SNAKE[i].Y < SNAKE[i - 1].Y)//up
+                    else if (SNAKE[i].X > SNAKE[i - 1].X && (SNAKE[i-1].X != 0 || SNAKE[i].X != temp - 1) || SNAKE[i].X==0&&SNAKE[i-1].X==temp-1)//left
+                        canvas.DrawImage(Image, SNAKE[i].X * 16, SNAKE[i].Y * 16, new Rectangle(3 * 16, 3 * 16, 16, 16), GraphicsUnit.Pixel);
+                    else if (SNAKE[i].Y > SNAKE[i - 1].Y && (SNAKE[i - 1].Y != 0 || SNAKE[i].Y != temp2 - 1) || SNAKE[i].Y == 0 && SNAKE[i-1].Y == temp2 - 1)//down
+                        canvas.DrawImage(Image, SNAKE[i].X * 16, SNAKE[i].Y * 16, new Rectangle(3 * 16, 2 * 16, 16, 16), GraphicsUnit.Pixel);
+                    else if (SNAKE[i].Y < SNAKE[i - 1].Y|| SNAKE[i-1].Y == 0 && SNAKE[i].Y == temp2 - 1)//up
                         canvas.DrawImage(Image, SNAKE[i].X * 16, SNAKE[i].Y * 16, new Rectangle(4 * 16, 3 * 16, 16, 16), GraphicsUnit.Pixel);
                 }
                 else
                 {
                     {
-                        if ((SNAKE[i].X < SNAKE[i - 1].X && SNAKE[i].X > SNAKE[i + 1].X) || (SNAKE[i].X > SNAKE[i - 1].X && SNAKE[i].X < SNAKE[i + 1].X))
+                        //Body horizontal
+                        if ((SNAKE[i].X < SNAKE[i - 1].X && SNAKE[i].X > SNAKE[i + 1].X) || (SNAKE[i].X > SNAKE[i - 1].X && SNAKE[i].X < SNAKE[i + 1].X) || (SNAKE[i].X < SNAKE[i - 1].X && SNAKE[i].X < SNAKE[i + 1].X) || (SNAKE[i].X > SNAKE[i - 1].X && SNAKE[i].X > SNAKE[i + 1].X))
                             canvas.DrawImage(Image, SNAKE[i].X * 16, SNAKE[i].Y * 16, new Rectangle(1 * 16, 0 * 16, 16, 16), GraphicsUnit.Pixel);
-                        else if ((SNAKE[i].Y > SNAKE[i - 1].Y && SNAKE[i].Y < SNAKE[i + 1].Y) || (SNAKE[i].Y < SNAKE[i - 1].Y && SNAKE[i].Y > SNAKE[i + 1].Y))
+                        //Body vertical
+                        else if ((SNAKE[i].Y > SNAKE[i - 1].Y && SNAKE[i].Y < SNAKE[i + 1].Y) || (SNAKE[i].Y < SNAKE[i - 1].Y && SNAKE[i].Y > SNAKE[i + 1].Y) || (SNAKE[i].Y < SNAKE[i - 1].Y && SNAKE[i].Y < SNAKE[i + 1].Y) || (SNAKE[i].Y > SNAKE[i - 1].Y && SNAKE[i].Y > SNAKE[i + 1].Y))
                             canvas.DrawImage(Image, SNAKE[i].X * 16, SNAKE[i].Y * 16, new Rectangle(2 * 16, 1 * 16, 16, 16), GraphicsUnit.Pixel);
-                        else if ((SNAKE[i].X > SNAKE[i + 1].X && SNAKE[i].Y > SNAKE[i - 1].Y) || (SNAKE[i].X > SNAKE[i - 1].X && SNAKE[i].Y > SNAKE[i + 1].Y))
+                        //Angle up-left
+                        else if ((SNAKE[i].X > SNAKE[i + 1].X && SNAKE[i].Y > SNAKE[i - 1].Y) && (SNAKE[i + 1].X != 0 && SNAKE[i - 1].Y != 0 || SNAKE[i - 1].X != temp - 1 && SNAKE[i + 1].Y != temp2 - 1) || (SNAKE[i].X > SNAKE[i - 1].X && SNAKE[i].Y > SNAKE[i + 1].Y) && (SNAKE[i - 1].X != 0 && SNAKE[i + 1].Y != 0 || SNAKE[i + 1].X != temp - 1 && SNAKE[i - 1].Y != temp2 - 1) || SNAKE[i].Y == 0 && SNAKE[i - 1].Y == temp2 - 1 && (SNAKE[i].X > SNAKE[i + 1].X && (SNAKE[i - 1].X != temp - 1 || SNAKE[i].Y < SNAKE[i - 1].Y)) || (SNAKE[i].Y == 0 && SNAKE[i + 1].Y == temp2 - 1 && (SNAKE[i].X > SNAKE[i - 1].X || SNAKE[i - 1].X == temp - 1)) || SNAKE[i].X == 0 && SNAKE[i + 1].X == temp - 1 && (SNAKE[i].Y > SNAKE[i - 1].Y && SNAKE[i - 1].Y != 0 || SNAKE[i - 1].Y == temp2 - 1) || SNAKE[i].X == 0 && SNAKE[i - 1].X == temp - 1 && (SNAKE[i].Y > SNAKE[i + 1].Y && SNAKE[i - 1].Y != temp2 - 1 || SNAKE[i].X < SNAKE[i - 1].X &&SNAKE[i].Y > SNAKE[i + 1].Y))
                             canvas.DrawImage(Image, SNAKE[i].X * 16, SNAKE[i].Y * 16, new Rectangle(2 * 16, 2 * 16, 16, 16), GraphicsUnit.Pixel);
-                        else if ((SNAKE[i].X > SNAKE[i - 1].X && SNAKE[i].Y < SNAKE[i + 1].Y) || (SNAKE[i].Y < SNAKE[i - 1].Y && SNAKE[i].X > SNAKE[i + 1].X))
+                        //Angle left-down
+                        else if ((SNAKE[i].X > SNAKE[i - 1].X && SNAKE[i].Y < SNAKE[i + 1].Y) && (SNAKE[i-1].X != 0 || SNAKE[i+1].X != temp-1) || (SNAKE[i].Y < SNAKE[i - 1].Y && SNAKE[i].X > SNAKE[i + 1].X) && ((SNAKE[i + 1].X != 0 || SNAKE[i - 1].X != temp-1)) || (SNAKE[i].X == 0 && SNAKE[i - 1].X == temp - 1) || (SNAKE[i].X == 0 && SNAKE[i + 1].X == temp - 1) && SNAKE[i].Y < SNAKE[i - 1].Y||SNAKE[i].Y==temp2-1&&SNAKE[i-1].Y==0&&(SNAKE[i].X>SNAKE[i+1].X&&SNAKE[i].X!=temp-1||(SNAKE[i].Y>SNAKE[i-1].Y&&SNAKE[i].X>SNAKE[i+1].X))||SNAKE[i].Y==temp2-1&&SNAKE[i+1].Y==0&& SNAKE[i].X > SNAKE[i - 1].X)
                             canvas.DrawImage(Image, SNAKE[i].X * 16, SNAKE[i].Y * 16, new Rectangle(2 * 16, 0 * 16, 16, 16), GraphicsUnit.Pixel);
-                        else if ((SNAKE[i].X < SNAKE[i - 1].X && SNAKE[i].Y > SNAKE[i + 1].Y) || (SNAKE[i].X < SNAKE[i + 1].X && SNAKE[i].Y > SNAKE[i - 1].Y))
+                        //Angle up-right
+                        else if ((SNAKE[i].X < SNAKE[i - 1].X && SNAKE[i].Y > SNAKE[i + 1].Y) &&(SNAKE[i].Y!=temp2-1||SNAKE[i+1].Y!=0)|| (SNAKE[i].X < SNAKE[i + 1].X && SNAKE[i].Y > SNAKE[i - 1].Y) &&(SNAKE[i].Y!=temp2-1||SNAKE[i-1].Y!=0)|| (SNAKE[i].Y == 0 && SNAKE[i+1].Y == temp2 - 1) || (SNAKE[i].Y == 0 && SNAKE[i-1].Y == temp2 - 1) || (SNAKE[i].X == temp - 1 && SNAKE[i + 1].X == 0 && SNAKE[i].Y>SNAKE[i-1].Y&&SNAKE[i-1].Y!=0)||(SNAKE[i].X==temp-1&&SNAKE[i-1].X==0&&SNAKE[i].Y>SNAKE[i+1].Y))
                             canvas.DrawImage(Image, SNAKE[i].X * 16, SNAKE[i].Y * 16, new Rectangle(0 * 16, 1 * 16, 16, 16), GraphicsUnit.Pixel);
-                        else if ((SNAKE[i].X < SNAKE[i - 1].X && SNAKE[i].Y < SNAKE[i + 1].Y) || (SNAKE[i].X < SNAKE[i + 1].X && SNAKE[i].Y < SNAKE[i - 1].Y))
+                        //Angle right-down
+                        else if ((SNAKE[i].X < SNAKE[i - 1].X && SNAKE[i].Y < SNAKE[i + 1].Y) || (SNAKE[i].X < SNAKE[i + 1].X && SNAKE[i].Y < SNAKE[i - 1].Y)||SNAKE[i].X==temp-1&&SNAKE[i-1].X==0|| SNAKE[i].X == temp-1 && SNAKE[i + 1].X == 0||SNAKE[i].Y==temp2-1&&SNAKE[i-1].Y==0||SNAKE[i].Y==temp2-1&&SNAKE[i+1].Y==0)
                             canvas.DrawImage(Image, SNAKE[i].X * 16, SNAKE[i].Y * 16, new Rectangle(0 * 16, 0 * 16, 16, 16), GraphicsUnit.Pixel);
                     }
                 }

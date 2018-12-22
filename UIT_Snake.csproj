@@ -58,6 +58,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GameScreen.cs" />
+    <Compile Include="HighScore.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HighScore.Designer.cs">
+      <DependentUpon>HighScore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Input.cs" />
     <Compile Include="MenuGame.cs">
       <SubType>UserControl</SubType>
@@ -65,7 +71,14 @@
     <Compile Include="MenuGame.Designer.cs">
       <DependentUpon>MenuGame.cs</DependentUpon>
     </Compile>
+    <Compile Include="NameRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NameRegister.Designer.cs">
+      <DependentUpon>NameRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="Obstacle.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Snake.cs" />
@@ -76,8 +89,14 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HighScore.resx">
+      <DependentUpon>HighScore.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuGame.resx">
       <DependentUpon>MenuGame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NameRegister.resx">
+      <DependentUpon>NameRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -128,6 +147,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="HighScore.txt" />
+    <None Include="Resources\Asset 16.png" />
+    <None Include="Resources\Asset 7.png" />
+    <None Include="Resources\Asset 1.png" />
+    <None Include="Resources\Asset 15.png" />
+    <None Include="Resources\Asset 14.png" />
+    <None Include="Resources\Asset 17.png" />
+    <None Include="Resources\Asset 10.png" />
+    <None Include="Resources\Asset 11.png" />
+    <None Include="Resources\LEADERBOARD-100.jpg" />
+    <None Include="Resources\MAIN MENU-100.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

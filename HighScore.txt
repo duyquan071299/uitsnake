@@ -1,6 +1,5 @@
-6
-7
-8
-13
-20
-22
+DuyQuan|15|1
+DuyQuan|13|2
+DuyQuan|12|3
+DuyQuan|12|4
+leonardo|4|6
