@@ -5,6 +5,13 @@ VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIT_Snake", "UIT_Snake.csproj", "{74E0655B-DBFE-4612-9638-BE811B8B855C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{80698F29-986B-47BB-8318-C440E20949D1}"
+	ProjectSection(SolutionItems) = preProject
+		sound\background.mp3 = sound\background.mp3
+		sound\Eat.wav = sound\Eat.wav
+		sound\lose.flac = sound\lose.flac
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

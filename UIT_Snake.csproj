@@ -77,6 +77,7 @@
     <Compile Include="NameRegister.Designer.cs">
       <DependentUpon>NameRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="MusicEffect.cs" />
     <Compile Include="Obstacle.cs" />
     <Compile Include="Option.cs">
       <SubType>UserControl</SubType>
@@ -153,6 +154,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ob2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="HighScore.txt" />

@@ -18,13 +18,14 @@ namespace UIT_Snake
         //Tạo màn hình chơi của game
         public GameScreen Screen;
         //Tạo bitmap để lưu ảnh
-         Bitmap Image;
         public int Gamemode;
         public string NewName;
         public int SnakeSpeed;
         public int Levelflag = 0;
         public PlayerInfo[] List;
         public int count = 0;
+        Bitmap Image;
+        SoundEffect BackgroundMusic = new SoundEffect(@"C:\Users\Duy Quan\Desktop\uitsnake\sound\background.mp3"); 
         public Form1()
         {
             InitializeComponent();
@@ -105,8 +106,8 @@ namespace UIT_Snake
         }
 
 
-        //Timer của chế độ một người chơi
-        private void timer1_Tick_1(object sender, EventArgs e)
+    //Timer của chế độ một người chơi
+    private void timer1_Tick_1(object sender, EventArgs e)
         {
 
             //Label lưu điểm
