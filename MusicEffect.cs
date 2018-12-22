@@ -23,7 +23,7 @@ namespace UIT_Snake
         public void Eat ()
         {
             _Eaten = new WindowsMediaPlayer();
-            _Eaten.URL = @"D:\Study\uitsnake\sound\Eat.wav";
+            _Eaten.URL = @"C:\Users\Duy Quan\Desktop\uitsnake\sound\Eat.wav";
             _Eaten.controls.play();
         }
         public void Dead()
