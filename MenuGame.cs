@@ -62,7 +62,9 @@ namespace UIT_Snake
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
+            ParentForm.LoadHighScore();
             ParentForm.ShowHighScore();
+            this.Visible = false;
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)

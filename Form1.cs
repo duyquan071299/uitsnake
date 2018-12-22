@@ -32,15 +32,19 @@ namespace UIT_Snake
             Image = new Bitmap(UIT_Snake.Properties.Resources.snake_graphics_1);
             this.menuGame1.ParentForm = this;
             this.highScore1.ParentForm = this;
-            highScore1.Hide();
+            highScore1.Visible = false;
             LoadData();
            
         }
 
         public void ShowHighScore()
         {
-            highScore1.Show();
+            highScore1.Visible = true;
             highScore1.BringToFront();
+        }
+        public void LoadHighScore()
+        {
+            highScore1.LoadHighScore();
         }
 
         public string FileLocation = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\HighScore.txt";
@@ -115,31 +119,27 @@ namespace UIT_Snake
                 new EndGame(this).ShowDialog();
                 if (count < 5)
                 {
-                    List[count++] = new PlayerInfo(NewName, Screen.snake.Score, count+1);
+                    List[count++] = new PlayerInfo(NewName, Screen.snake.Score, count + 1);
                     SaveData(List);
                 }
                 else
                 {
-                  for(int i=count-1;i>=0;i--)
+                    if (Screen.snake.Score > List[count - 1].Score)
                     {
-                        if(Screen.snake.Score<=List[i].Score)
-                        {
-                            if((i)!=count-1)
-                            {
-                                List[i + 1].Score = Screen.snake.Score;
-                                List[i + 1].Name = NewName;
-                                SaveData(List);
-                                return;
-                            }
-                            else
-                            {
-                                return;
-                            }
-                        }
+                        List[count - 1].Score = Screen.snake.Score;
+                        List[count - 1].Name = NewName;
+                        SaveData(List);
                     }
+                    for (int i = 0; i < count - 1; i++)
+                        for (int j = 0; j < count - i - 1; j++)
+                            if (List[j].Score < List[j + 1].Score)
+                            {
+                                PlayerInfo temp = List[j];
+                                List[j] = List[j + 1];
+                                List[j + 1] = temp;
+                            }
+                    Screen.GameOver = false;
                 }
-                Screen.GameOver = false;
-                
             }
             else
             {

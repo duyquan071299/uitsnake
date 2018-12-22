@@ -65,7 +65,7 @@ namespace UIT_Snake.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap Asset_1 {
             get {
-                object obj = ResourceManager.GetObject("Asset 1", resourceCulture);
+                object obj = ResourceManager.GetObject("Asset_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -95,7 +95,7 @@ namespace UIT_Snake.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap Asset_14 {
             get {
-                object obj = ResourceManager.GetObject("Asset 14", resourceCulture);
+                object obj = ResourceManager.GetObject("Asset_14", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -105,7 +105,7 @@ namespace UIT_Snake.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap Asset_15 {
             get {
-                object obj = ResourceManager.GetObject("Asset 15", resourceCulture);
+                object obj = ResourceManager.GetObject("Asset_15", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -115,7 +115,7 @@ namespace UIT_Snake.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap Asset_16 {
             get {
-                object obj = ResourceManager.GetObject("Asset 16", resourceCulture);
+                object obj = ResourceManager.GetObject("Asset_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -125,7 +125,7 @@ namespace UIT_Snake.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap Asset_17 {
             get {
-                object obj = ResourceManager.GetObject("Asset 17", resourceCulture);
+                object obj = ResourceManager.GetObject("Asset_17", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -135,7 +135,17 @@ namespace UIT_Snake.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap Asset_7 {
             get {
-                object obj = ResourceManager.GetObject("Asset 7", resourceCulture);
+                object obj = ResourceManager.GetObject("Asset_7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap blue_tint_snake {
+            get {
+                object obj = ResourceManager.GetObject("blue_tint_snake", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -185,7 +195,7 @@ namespace UIT_Snake.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap LEADERBOARD_100 {
             get {
-                object obj = ResourceManager.GetObject("LEADERBOARD-100", resourceCulture);
+                object obj = ResourceManager.GetObject("LEADERBOARD_100", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

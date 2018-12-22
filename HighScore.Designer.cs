@@ -172,7 +172,6 @@
             this.Controls.Add(this.label1);
             this.Name = "HighScore";
             this.Size = new System.Drawing.Size(1114, 625);
-            this.Load += new System.EventHandler(this.HighScore_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

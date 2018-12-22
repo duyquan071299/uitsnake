@@ -36,7 +36,8 @@ namespace UIT_Snake
               });
         }
 
-        private void HighScore_Load(object sender, EventArgs e)
+       
+        public void LoadHighScore()
         {
             for (int i = 0; i < ParentForm.List.Count(); i++)
             {
@@ -51,8 +52,9 @@ namespace UIT_Snake
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            ParentForm.menuGame1.BringToFront();
+            this.Visible = false;
+
+            ParentForm.menuGame1.Visible = true;
         }
     }
 }

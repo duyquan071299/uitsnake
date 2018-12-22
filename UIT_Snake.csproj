@@ -78,6 +78,12 @@
       <DependentUpon>NameRegister.cs</DependentUpon>
     </Compile>
     <Compile Include="Obstacle.cs" />
+    <Compile Include="Option.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Option.Designer.cs">
+      <DependentUpon>Option.cs</DependentUpon>
+    </Compile>
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NameRegister.resx">
       <DependentUpon>NameRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Option.resx">
+      <DependentUpon>Option.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -147,6 +156,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="HighScore.txt" />
+    <None Include="Resources\red_snake.png" />
+    <None Include="Resources\white_snake.png" />
+    <None Include="Resources\blue_tint_snake.png" />
+    <None Include="Resources\blue_snake.png" />
     <None Include="Resources\Asset 16.png" />
     <None Include="Resources\Asset 7.png" />
     <None Include="Resources\Asset 1.png" />

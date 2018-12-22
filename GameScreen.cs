@@ -132,13 +132,12 @@ namespace UIT_Snake
                 }
             }
         }
-
         public void Draw(Graphics g, Bitmap Image)
         {
                 snake.DrawSnake(g, Image);
 
                 if (snake2 != null)
-                    snake2.DrawSnake(g, Image);
+                    snake2.DrawSnake(g, UIT_Snake.Properties.Resources.blue_tint_snake);
                food.DrawFood(g, Image);
              obstacle.DrawObstacle(g);
         }
