@@ -35,6 +35,7 @@ namespace UIT_Snake
                 ParentForm.startTimer(1);
                 this.Enabled = false;
                 this.Hide();
+                ParentForm.PauseBackMusic(1);
                 ParentForm.Controls["ClockLabel"].Hide();
                 a.Dispose();
             }
@@ -51,6 +52,7 @@ namespace UIT_Snake
             Input.keys.Clear();
             if (ParentForm == null)
                 return;
+            ParentForm.PauseBackMusic(1);
             ParentForm.Screen = new GameScreen(ParentForm.pictureBox1, 2);
             ParentForm.Gamemode = 2;
             ParentForm.startTimer(2);
@@ -70,6 +72,11 @@ namespace UIT_Snake
         private void pictureBox4_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

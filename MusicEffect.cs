@@ -19,7 +19,14 @@ namespace UIT_Snake
             _sound.URL = _filePath;
             _sound.controls.play();
         }
-
+        public void PauseSound()
+        {
+            _sound.controls.pause();   
+        }
+        public void PlaySound()
+        {
+            _sound.controls.play();
+        }
         public void Eat ()
         {
             _Eaten = new WindowsMediaPlayer();
@@ -29,7 +36,7 @@ namespace UIT_Snake
         public void Dead()
         {
             _Dead = new WindowsMediaPlayer();
-            _Dead.URL = @"D:\Study\uitsnake\sound\lose.flac";
+            _Dead.URL = @"C:\Users\Duy Quan\Desktop\uitsnake\sound\lose.flac";
             _Dead.controls.play();
         }
     }

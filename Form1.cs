@@ -26,6 +26,7 @@ namespace UIT_Snake
         public int count = 0;
         Bitmap Image;
         SoundEffect BackgroundMusic = new SoundEffect(@"C:\Users\Duy Quan\Desktop\uitsnake\sound\background.mp3"); 
+
         public Form1()
         {
             InitializeComponent();
@@ -37,7 +38,13 @@ namespace UIT_Snake
             LoadData();
            
         }
-
+        public void PauseBackMusic(int option)
+        {
+            if (option == 1)
+                BackgroundMusic.PauseSound();
+            else
+                BackgroundMusic.PlaySound();
+        }
         public void ShowHighScore()
         {
             highScore1.Visible = true;

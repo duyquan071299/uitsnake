@@ -86,6 +86,7 @@ namespace UIT_Snake
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
+            form1.PauseBackMusic(2);
             form1.menuGame1.Enabled = true;
             form1.menuGame1.Show();
             this.Close();
