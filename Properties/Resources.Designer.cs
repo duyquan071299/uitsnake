@@ -313,6 +313,16 @@ namespace UIT_Snake.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap snake_yellow {
+            get {
+                object obj = ResourceManager.GetObject("snake_yellow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sound_1 {
             get {
                 object obj = ResourceManager.GetObject("sound_1", resourceCulture);

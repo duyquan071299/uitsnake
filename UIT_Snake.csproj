@@ -168,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="HighScore.txt" />
+    <None Include="Resources\snake_yellow.png" />
     <None Include="Resources\sound_1.png" />
     <None Include="Resources\skin_1.png" />
     <None Include="Resources\map_1.png" />
