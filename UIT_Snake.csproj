@@ -168,14 +168,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="HighScore.txt" />
-    <None Include="Resources\snake_yellow.png" />
-    <None Include="Resources\snake_gold %282%29.png" />
-    <None Include="Resources\snake_gold.png" />
+    <None Include="Resources\sound_1.png" />
+    <None Include="Resources\skin_1.png" />
+    <None Include="Resources\map_1.png" />
+    <None Include="Resources\option.png" />
     <None Include="Resources\Game over.png" />
     <None Include="Resources\player name.png" />
     <None Include="Resources\Asset 13.png" />
     <None Include="Resources\Asset_18.png" />
-    <None Include="Resources\Game_over.png" />
     <None Include="Resources\blue_tint_snake.png" />
     <None Include="Resources\Asset 16.png" />
     <None Include="Resources\Asset 7.png" />

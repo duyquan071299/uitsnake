@@ -30,13 +30,13 @@ namespace UIT_Snake
         public void Eat ()
         {
             _Eaten = new WindowsMediaPlayer();
-            _Eaten.URL = @"C:\Users\Duy Quan\Desktop\uitsnake\sound\Eat.wav";
+            _Eaten.URL = Form1.FileLocation + "\\sound\\Eat.wav";
             _Eaten.controls.play();
         }
         public void Dead()
         {
             _Dead = new WindowsMediaPlayer();
-            _Dead.URL = @"C:\Users\Duy Quan\Desktop\uitsnake\sound\lose.flac";
+            _Dead.URL = Form1.FileLocation + "\\sound\\lose.flac";
             _Dead.controls.play();
         }
     }

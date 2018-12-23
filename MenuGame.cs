@@ -16,6 +16,7 @@ namespace UIT_Snake
         public MenuGame()
         {
             InitializeComponent();
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -30,12 +31,13 @@ namespace UIT_Snake
                     return;
                 Label label2 = (ParentForm.Controls["label2"] as Label);
                 label2.Hide();
-                ParentForm.Screen = new GameScreen(ParentForm.pictureBox1, 1);
+                ParentForm.Screen = new GameScreen(ParentForm.pictureBox1, 1,ParentForm.MapMode);
                 ParentForm.Gamemode = 1;
                 ParentForm.startTimer(1);
                 this.Enabled = false;
                 this.Hide();
                 ParentForm.PauseBackMusic(1);
+                ParentForm.PauseSound();
                 ParentForm.Controls["ClockLabel"].Hide();
                 a.Dispose();
             }
@@ -53,10 +55,12 @@ namespace UIT_Snake
             if (ParentForm == null)
                 return;
             ParentForm.PauseBackMusic(1);
-            ParentForm.Screen = new GameScreen(ParentForm.pictureBox1, 2);
+            ParentForm.Screen = new GameScreen(ParentForm.pictureBox1, 2,ParentForm.MapMode);
             ParentForm.Gamemode = 2;
             ParentForm.startTimer(2);
             ParentForm.startTimer(3);
+            ParentForm.PauseSound();
+
             this.Enabled = false;
             this.Hide();
         }
@@ -76,7 +80,7 @@ namespace UIT_Snake
 
         private void pictureBox5_Click(object sender, EventArgs e)
         {
-
+            ParentForm.OptionShow();       
         }
     }
 }
