@@ -31,7 +31,7 @@ namespace UIT_Snake
         {
             InitializeComponent();
             //Lưu ảnh các bộ phận và đồ ăn của rắn vào bitmap Image
-            Image = new Bitmap(UIT_Snake.Properties.Resources.snake_graphics_1);
+            Image = new Bitmap(UIT_Snake.Properties.Resources.snake_yellow);
             this.menuGame1.ParentForm = this;
             this.highScore1.ParentForm = this;
             highScore1.Visible = false;

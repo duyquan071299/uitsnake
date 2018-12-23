@@ -88,6 +88,11 @@
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Snake.cs" />
     <Compile Include="SnakePart.cs" />
     <EmbeddedResource Include="EndGame.resx">
@@ -111,6 +116,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -162,12 +168,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="HighScore.txt" />
+    <None Include="Resources\snake_yellow.png" />
+    <None Include="Resources\snake_gold %282%29.png" />
+    <None Include="Resources\snake_gold.png" />
     <None Include="Resources\Game over.png" />
     <None Include="Resources\player name.png" />
     <None Include="Resources\Asset 13.png" />
     <None Include="Resources\Asset_18.png" />
     <None Include="Resources\Game_over.png" />
-    <None Include="Resources\player_name.png" />
     <None Include="Resources\blue_tint_snake.png" />
     <None Include="Resources\Asset 16.png" />
     <None Include="Resources\Asset 7.png" />
