@@ -31,14 +31,13 @@ namespace UIT_Snake
 
         //Clock count
         public bool TimeOver = false;
-
         public bool GameOver =false;
         //timer của trò chơi
         public GameScreen() { }
-        public GameScreen(PictureBox PlayZone,int Gamemode)
+        public GameScreen(PictureBox PlayZone,int Gamemode,int MapMode)
         {
             GameMode = Gamemode;
-            obstacle = new Obstacle(2);
+            obstacle = new Obstacle(MapMode);
             snake = new cSnake();
             snake.CreateSnake(9, 10);
             this.PlayZone = PlayZone;

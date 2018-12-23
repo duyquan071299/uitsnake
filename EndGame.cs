@@ -18,14 +18,14 @@ namespace UIT_Snake
         {    
             InitializeComponent();
             form1 = frm;
-            if (form1.count < 5)
-            {
-                label2.Text += ("Score:" + form1.Screen.snake.Score.ToString());
-            }
+           
+            
+           
             
             switch (form1.Screen.Winner)
             {
                 case -1:
+                    label2.Text += ("Score:" + form1.Screen.snake.Score.ToString());
                     break;
                 case 0:
                     label2.Text += (" HOA  ");
@@ -45,12 +45,12 @@ namespace UIT_Snake
             Input.keys.Clear();
             if (form1.Screen.GameMode == 1)
             {
-                form1.Screen = new GameScreen(form1.pictureBox1, 1);
+                form1.Screen = new GameScreen(form1.pictureBox1,1, form1.MapMode);
                 form1.startTimer(1);
             }
             else if(form1.Screen.GameMode==2)
             {
-                form1.Screen = new GameScreen(form1.pictureBox1, 2);
+                form1.Screen = new GameScreen(form1.pictureBox1,2,form1.MapMode);
                 form1.startTimer(2);
                 form1.startTimer(3);
             
@@ -68,14 +68,18 @@ namespace UIT_Snake
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             Input.keys.Clear();
+            
+
             if (form1.Screen.GameMode == 1)
             {
-                form1.Screen = new GameScreen(form1.pictureBox1, 1);
+                form1.Screen = new GameScreen(form1.pictureBox1, 1,form1.MapMode);
+                form1.PauseSound();
                 form1.startTimer(1);
             }
             else if (form1.Screen.GameMode == 2)
             {
-                form1.Screen = new GameScreen(form1.pictureBox1, 2);
+                form1.Screen = new GameScreen(form1.pictureBox1, 2,form1.MapMode);
+                form1.PauseSound();
                 form1.startTimer(2);
                 form1.startTimer(3);
 

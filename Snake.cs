@@ -16,7 +16,7 @@ namespace UIT_Snake
         public int direction { get; set; }
 
         public List<SnakePart> SNAKE;
-
+        public bool SoundOn = true;
         public int Score;
         SoundEffect Sound = new SoundEffect();
         public bool Alive;
@@ -92,7 +92,8 @@ namespace UIT_Snake
                         else if (direction == 3)
                             SNAKE[i].Y++;
                         Alive = false;
-                        Sound.Dead();
+                        if (SoundOn)
+                            Sound.Dead();
                         return;
                     }
  
@@ -103,32 +104,38 @@ namespace UIT_Snake
 
                     if (SNAKE[i].X < 0 || SNAKE[i].X > max_tile_w-1 || SNAKE[i].Y < 0 || SNAKE[i].Y > max_tile_h-1 )
                     {
-                        //if (direction == 0)
-                        //    SNAKE[i].Y--;
-                        //else if (direction == 1)
-                        //    SNAKE[i].X++;
-                        //else if (direction == 2)
-                        //    SNAKE[i].X--;
-                        //else if (direction == 3)
-                        //    SNAKE[i].Y++;
-                        //Alive = false;
-                        //return;
-                        if (direction == 1)
+                        if (obstacles.MapMode == 3)
                         {
-                            SNAKE[i].X = (max_tile_w-1 );
+                            if (direction == 0)
+                                SNAKE[i].Y--;
+                            else if (direction == 1)
+                                SNAKE[i].X++;
+                            else if (direction == 2)
+                                SNAKE[i].X--;
+                            else if (direction == 3)
+                                SNAKE[i].Y++;
+                            Alive = false;
+                            return;
+                        }
+                        else
+                        {
+                            if (direction == 1)
+                            {
+                                SNAKE[i].X = (max_tile_w - 1);
 
-                        }
-                        else if(direction==2)
-                        {
-                            SNAKE[i].X = 0;
-                        }
-                        else if(direction==0)
-                        {
-                            SNAKE[i].Y = 0;
-                        }
-                        else if(direction==3)
-                        {
-                            SNAKE[i].Y = max_tile_h - 1;
+                            }
+                            else if (direction == 2)
+                            {
+                                SNAKE[i].X = 0;
+                            }
+                            else if (direction == 0)
+                            {
+                                SNAKE[i].Y = 0;
+                            }
+                            else if (direction == 3)
+                            {
+                                SNAKE[i].Y = max_tile_h - 1;
+                            }
                         }
                     }
 
@@ -147,8 +154,8 @@ namespace UIT_Snake
                     {
                         food.isEaten = true;
                         SnakePart temp = new SnakePart();
-                        Sound.Eat();
-
+                        if (SoundOn)
+                            Sound.Eat();
                         temp.X = SNAKE[SNAKE.Count - 1].X;
                         temp.Y = SNAKE[SNAKE.Count - 1].Y;
                         SNAKE.Add(temp);

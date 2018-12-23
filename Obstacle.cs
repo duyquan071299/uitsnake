@@ -21,7 +21,7 @@ namespace UIT_Snake
             MapMode = option;
             if (MapMode == 1)
             {
-                Rectangle ob1 = new Rectangle(5*16 , 6*16 , 400, 16);
+                Rectangle ob1 = new Rectangle(5 * 16, 6 * 16, 400, 16);
                 ob.Add(ob1);
                 ob1 = new Rectangle(5 * 16, 22 * 16, 400, 16);
                 ob.Add(ob1);
@@ -37,10 +37,10 @@ namespace UIT_Snake
                 rg.Union(rg2);
                 rg.Union(rg3);
             }
-            else if(MapMode==2)
+            else if (MapMode == 2)
             {
 
-                Rectangle ob1 = new Rectangle(5 * 16, 4* 16, 400, 16);
+                Rectangle ob1 = new Rectangle(5 * 16, 4 * 16, 400, 16);
                 ob.Add(ob1);
                 ob1 = new Rectangle(5 * 16, 9 * 16, 400, 16);
                 ob.Add(ob1);
@@ -62,7 +62,11 @@ namespace UIT_Snake
 
 
             }
+            else if (MapMode == 3)
+                rg = new Region(new Rectangle(50 * 16, 50 * 16, 16, 16));
+
         }
+
         public void DrawObstacle(Graphics canvas)
         {
             if (MapMode == 1)
@@ -72,7 +76,7 @@ namespace UIT_Snake
                 canvas.DrawImage(UIT_Snake.Properties.Resources.ob2, ob[2]);
                 canvas.DrawImage(UIT_Snake.Properties.Resources.ob2, ob[3]);
             }
-            else if(MapMode==2)
+            else if (MapMode == 2)
             {
                 canvas.DrawImage(UIT_Snake.Properties.Resources.ob1, ob[0]);
                 canvas.DrawImage(UIT_Snake.Properties.Resources.ob1, ob[1]);
@@ -80,9 +84,10 @@ namespace UIT_Snake
                 canvas.DrawImage(UIT_Snake.Properties.Resources.ob1, ob[3]);
                 canvas.DrawImage(UIT_Snake.Properties.Resources.ob1, ob[4]);
             }
+            else if (MapMode == 3)
+                return;
+
 
         }
-
-
     }
 }

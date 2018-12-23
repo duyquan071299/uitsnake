@@ -18,32 +18,84 @@ namespace UIT_Snake
         //Tạo màn hình chơi của game
         public GameScreen Screen;
         //Tạo bitmap để lưu ảnh
-        public int Gamemode;
+        public int Gamemode, MapMode =1 ;
         public string NewName;
         public int SnakeSpeed;
         public int Levelflag = 0;
         public PlayerInfo[] List;
         public int count = 0;
+        public int SoundOption;
         Bitmap Image;
-        SoundEffect BackgroundMusic = new SoundEffect(@"C:\Users\Duy Quan\Desktop\uitsnake\sound\background.mp3"); 
+        public static string FileLocation = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+        
+        SoundEffect BackgroundMusic = new SoundEffect( FileLocation + "\\sound\\background.mp3");
+        Option _option = new Option();
+
 
         public Form1()
         {
             InitializeComponent();
             //Lưu ảnh các bộ phận và đồ ăn của rắn vào bitmap Image
-            Image = new Bitmap(UIT_Snake.Properties.Resources.snake_graphics_1);
+            Image = new Bitmap(UIT_Snake.Properties.Resources.blue_tint_snake);
             this.menuGame1.ParentForm = this;
             this.highScore1.ParentForm = this;
+            this._option.ParentForm = this;
             highScore1.Visible = false;
             LoadData();
-           
+            this.Controls.Add(_option);
+            _option.Visible = false;
         }
+        public void ChangeMap(int Select)
+        {
+            switch (Select)
+            {
+                case 1:
+                    MapMode = 1;
+                    break;
+                case 2:
+                    MapMode = 2;
+                    break;
+                case 3:
+                    MapMode = 3;
+                    break;
+            }
+        }
+        public void OptionShow ()
+        {
+            _option.Show();
+            _option.BringToFront();
+            
+        }
+        public void OptionBack()
+        {
+            _option.Hide();
+        }
+        
         public void PauseBackMusic(int option)
         {
             if (option == 1)
                 BackgroundMusic.PauseSound();
             else
                 BackgroundMusic.PlaySound();
+            
+        }
+        public void PauseSound()
+        {
+            if (SoundOption == 0)
+            {
+                Screen.snake.SoundOn = true;
+                if (Screen.snake2 != null)
+                    Screen.snake2.SoundOn = true;
+                return;
+            }
+            else
+            {
+                Screen.snake.SoundOn = false;
+                if (Screen.snake2 != null)
+                    Screen.snake2.SoundOn = false;
+                return;
+            }
+
         }
         public void ShowHighScore()
         {
@@ -55,13 +107,13 @@ namespace UIT_Snake
             highScore1.LoadHighScore();
         }
 
-        public string FileLocation = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\HighScore.txt";
-        public  void LoadData()
+       
+        public void LoadData()
         {
             List = new PlayerInfo[5] ;
-            string[] lines = System.IO.File.ReadAllLines(FileLocation);
+            string[] lines = System.IO.File.ReadAllLines(FileLocation + "\\HighScore.txt");
             
-            StreamReader sr = new StreamReader(FileLocation);
+            StreamReader sr = new StreamReader(FileLocation + "\\HighScore.txt");
             string line;
             while ((line = sr.ReadLine()) != null)
             {
@@ -83,7 +135,7 @@ namespace UIT_Snake
 
         public void SaveData(PlayerInfo[] List)
         {
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(FileLocation))
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(FileLocation + "\\HighScore.txt"))
             {
                 for (int i = 0; i < count; i++)
                     file.WriteLine(List[i].Name + "|" + List[i].Score + "|" + List[i].Rank);
