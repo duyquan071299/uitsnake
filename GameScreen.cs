@@ -27,6 +27,7 @@ namespace UIT_Snake
 
         public int GameMode;
 
+        public int SnakeSkin;
         public Obstacle obstacle;
 
         //Clock count
@@ -34,11 +35,12 @@ namespace UIT_Snake
         public bool GameOver =false;
         //timer của trò chơi
         public GameScreen() { }
-        public GameScreen(PictureBox PlayZone,int Gamemode,int MapMode)
+        public GameScreen(PictureBox PlayZone,int Gamemode,int MapMode,int Skin)
         {
             GameMode = Gamemode;
             obstacle = new Obstacle(MapMode);
             snake = new cSnake();
+            this.SnakeSkin = Skin;
             snake.CreateSnake(9, 10);
             this.PlayZone = PlayZone;
             this.food = new Food();
@@ -131,14 +133,18 @@ namespace UIT_Snake
                 }
             }
         }
-        public void Draw(Graphics g, Bitmap Image)
+        public void Draw(Graphics g)
         {
-                snake.DrawSnake(g, Image);
-
-                if (snake2 != null)
-                    snake2.DrawSnake(g, UIT_Snake.Properties.Resources.blue_tint_snake);
-               food.DrawFood(g, Image);
-             obstacle.DrawObstacle(g);
+            if (SnakeSkin == 1)
+                snake.DrawSnake(g, UIT_Snake.Properties.Resources.snake_default);
+            else if(SnakeSkin==2)
+                snake.DrawSnake(g, UIT_Snake.Properties.Resources.blue_tint_snake);
+            else if(SnakeSkin==3)
+                snake.DrawSnake(g, UIT_Snake.Properties.Resources.snake_yellow);
+            if (snake2 != null)
+                snake2.DrawSnake(g, UIT_Snake.Properties.Resources.snake_pale);
+            food.DrawFood(g,UIT_Snake.Properties.Resources.snake_default);
+            obstacle.DrawObstacle(g);
         }
     }
 }

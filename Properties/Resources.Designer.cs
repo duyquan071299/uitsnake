@@ -293,6 +293,16 @@ namespace UIT_Snake.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap snake_default {
+            get {
+                object obj = ResourceManager.GetObject("snake_default", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap snake_graphics_1 {
             get {
                 object obj = ResourceManager.GetObject("snake_graphics_1", resourceCulture);
@@ -306,6 +316,16 @@ namespace UIT_Snake.Properties {
         internal static System.Drawing.Bitmap Snake_main {
             get {
                 object obj = ResourceManager.GetObject("Snake_main", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap snake_pale {
+            get {
+                object obj = ResourceManager.GetObject("snake_pale", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -45,12 +45,12 @@ namespace UIT_Snake
             Input.keys.Clear();
             if (form1.Screen.GameMode == 1)
             {
-                form1.Screen = new GameScreen(form1.pictureBox1,1, form1.MapMode);
+                form1.Screen = new GameScreen(form1.pictureBox1,1, form1.MapMode,form1.Skin);
                 form1.startTimer(1);
             }
             else if(form1.Screen.GameMode==2)
             {
-                form1.Screen = new GameScreen(form1.pictureBox1,2,form1.MapMode);
+                form1.Screen = new GameScreen(form1.pictureBox1,2,form1.MapMode, form1.Skin);
                 form1.startTimer(2);
                 form1.startTimer(3);
             
@@ -72,13 +72,13 @@ namespace UIT_Snake
 
             if (form1.Screen.GameMode == 1)
             {
-                form1.Screen = new GameScreen(form1.pictureBox1, 1,form1.MapMode);
+                form1.Screen = new GameScreen(form1.pictureBox1, 1,form1.MapMode, form1.Skin);
                 form1.PauseSound();
                 form1.startTimer(1);
             }
             else if (form1.Screen.GameMode == 2)
             {
-                form1.Screen = new GameScreen(form1.pictureBox1, 2,form1.MapMode);
+                form1.Screen = new GameScreen(form1.pictureBox1, 2,form1.MapMode, form1.Skin);
                 form1.PauseSound();
                 form1.startTimer(2);
                 form1.startTimer(3);

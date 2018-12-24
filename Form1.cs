@@ -18,16 +18,14 @@ namespace UIT_Snake
         //Tạo màn hình chơi của game
         public GameScreen Screen;
         //Tạo bitmap để lưu ảnh
-        public int Gamemode, MapMode =1 ;
+        public int Gamemode, MapMode =1,Skin=1 ;
         public string NewName;
         public int SnakeSpeed;
         public int Levelflag = 0;
         public PlayerInfo[] List;
         public int count = 0;
         public int SoundOption;
-        Bitmap Image;
         public static string FileLocation = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
-        
         SoundEffect BackgroundMusic = new SoundEffect( FileLocation + "\\sound\\background.mp3");
         Option _option = new Option();
 
@@ -36,7 +34,6 @@ namespace UIT_Snake
         {
             InitializeComponent();
             //Lưu ảnh các bộ phận và đồ ăn của rắn vào bitmap Image
-            Image = new Bitmap(UIT_Snake.Properties.Resources.snake_yellow);
             this.menuGame1.ParentForm = this;
             this.highScore1.ParentForm = this;
             this._option.ParentForm = this;
@@ -57,6 +54,21 @@ namespace UIT_Snake
                     break;
                 case 3:
                     MapMode = 3;
+                    break;
+            }
+        }
+        public void ChangeSkin(int Select)
+        {
+            switch (Select)
+            {
+                case 1:
+                    Skin = 1;
+                    break;
+                case 2:
+                    Skin = 2;
+                    break;
+                case 3:
+                    Skin = 3;
                     break;
             }
         }
@@ -290,7 +302,7 @@ namespace UIT_Snake
         {
             try
             {
-                Screen.Draw(e.Graphics, Image);
+                Screen.Draw(e.Graphics);
             }
             catch { }
 

@@ -106,10 +106,13 @@
             // ClockLabel
             // 
             this.ClockLabel.BackColor = System.Drawing.Color.White;
+            this.ClockLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClockLabel.Image = global::UIT_Snake.Properties.Resources.label_score;
             this.ClockLabel.Location = new System.Drawing.Point(861, 403);
             this.ClockLabel.Name = "ClockLabel";
             this.ClockLabel.Size = new System.Drawing.Size(144, 65);
             this.ClockLabel.TabIndex = 5;
+            this.ClockLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // timerClock
             // 
@@ -150,12 +153,12 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1114, 625);
             this.ControlBox = false;
-            this.Controls.Add(this.highScore1);
             this.Controls.Add(this.menuGame1);
             this.Controls.Add(this.ClockLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.highScore1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;

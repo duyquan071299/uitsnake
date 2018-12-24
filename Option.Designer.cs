@@ -31,15 +31,15 @@
             this.BackGroundSoundCheck = new System.Windows.Forms.CheckBox();
             this.SoundEffectCheck = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Hard = new System.Windows.Forms.RadioButton();
             this.MapRadio2 = new System.Windows.Forms.RadioButton();
             this.MapRadio1 = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.SkinBtn3 = new System.Windows.Forms.RadioButton();
             this.SkinBtn2 = new System.Windows.Forms.RadioButton();
             this.SkinBtn1 = new System.Windows.Forms.RadioButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Hard = new System.Windows.Forms.RadioButton();
-            this.SkinBtn3 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -53,7 +53,7 @@
             this.BackGroundSoundCheck.Checked = true;
             this.BackGroundSoundCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.BackGroundSoundCheck.Font = new System.Drawing.Font("Showcard Gothic", 10.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackGroundSoundCheck.Location = new System.Drawing.Point(309, 59);
+            this.BackGroundSoundCheck.Location = new System.Drawing.Point(335, 59);
             this.BackGroundSoundCheck.Name = "BackGroundSoundCheck";
             this.BackGroundSoundCheck.Size = new System.Drawing.Size(232, 27);
             this.BackGroundSoundCheck.TabIndex = 0;
@@ -69,7 +69,7 @@
             this.SoundEffectCheck.Checked = true;
             this.SoundEffectCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.SoundEffectCheck.Font = new System.Drawing.Font("Showcard Gothic", 10.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SoundEffectCheck.Location = new System.Drawing.Point(106, 59);
+            this.SoundEffectCheck.Location = new System.Drawing.Point(86, 59);
             this.SoundEffectCheck.Name = "SoundEffectCheck";
             this.SoundEffectCheck.Size = new System.Drawing.Size(165, 27);
             this.SoundEffectCheck.TabIndex = 1;
@@ -86,16 +86,28 @@
             this.panel1.Controls.Add(this.Hard);
             this.panel1.Controls.Add(this.MapRadio2);
             this.panel1.Controls.Add(this.MapRadio1);
-            this.panel1.Location = new System.Drawing.Point(240, 121);
+            this.panel1.Location = new System.Drawing.Point(240, 266);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(637, 133);
             this.panel1.TabIndex = 5;
+            // 
+            // Hard
+            // 
+            this.Hard.AutoSize = true;
+            this.Hard.Font = new System.Drawing.Font("Showcard Gothic", 10.8F, System.Drawing.FontStyle.Italic);
+            this.Hard.Location = new System.Drawing.Point(482, 57);
+            this.Hard.Name = "Hard";
+            this.Hard.Size = new System.Drawing.Size(85, 27);
+            this.Hard.TabIndex = 2;
+            this.Hard.Text = "Hard";
+            this.Hard.UseVisualStyleBackColor = true;
+            this.Hard.CheckedChanged += new System.EventHandler(this.Hard_CheckedChanged);
             // 
             // MapRadio2
             // 
             this.MapRadio2.AutoSize = true;
             this.MapRadio2.Font = new System.Drawing.Font("Showcard Gothic", 10.8F, System.Drawing.FontStyle.Italic);
-            this.MapRadio2.Location = new System.Drawing.Point(213, 57);
+            this.MapRadio2.Location = new System.Drawing.Point(270, 57);
             this.MapRadio2.Name = "MapRadio2";
             this.MapRadio2.Size = new System.Drawing.Size(106, 27);
             this.MapRadio2.TabIndex = 1;
@@ -108,7 +120,7 @@
             this.MapRadio1.AutoSize = true;
             this.MapRadio1.Checked = true;
             this.MapRadio1.Font = new System.Drawing.Font("Showcard Gothic", 10.8F, System.Drawing.FontStyle.Italic);
-            this.MapRadio1.Location = new System.Drawing.Point(47, 57);
+            this.MapRadio1.Location = new System.Drawing.Point(86, 57);
             this.MapRadio1.Name = "MapRadio1";
             this.MapRadio1.Size = new System.Drawing.Size(77, 27);
             this.MapRadio1.TabIndex = 0;
@@ -125,21 +137,31 @@
             this.panel2.Controls.Add(this.SkinBtn3);
             this.panel2.Controls.Add(this.SkinBtn2);
             this.panel2.Controls.Add(this.SkinBtn1);
-            this.panel2.Location = new System.Drawing.Point(240, 274);
+            this.panel2.Location = new System.Drawing.Point(240, 405);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(637, 133);
             this.panel2.TabIndex = 5;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // SkinBtn3
+            // 
+            this.SkinBtn3.AutoSize = true;
+            this.SkinBtn3.Font = new System.Drawing.Font("Showcard Gothic", 10.8F, System.Drawing.FontStyle.Italic);
+            this.SkinBtn3.Location = new System.Drawing.Point(482, 68);
+            this.SkinBtn3.Name = "SkinBtn3";
+            this.SkinBtn3.Size = new System.Drawing.Size(83, 27);
+            this.SkinBtn3.TabIndex = 2;
+            this.SkinBtn3.Text = "Skin3";
+            this.SkinBtn3.UseVisualStyleBackColor = true;
+            this.SkinBtn3.CheckedChanged += new System.EventHandler(this.SkinBtn3_CheckedChanged);
             // 
             // SkinBtn2
             // 
             this.SkinBtn2.AutoSize = true;
             this.SkinBtn2.Font = new System.Drawing.Font("Showcard Gothic", 10.8F, System.Drawing.FontStyle.Italic);
-            this.SkinBtn2.Location = new System.Drawing.Point(213, 68);
+            this.SkinBtn2.Location = new System.Drawing.Point(270, 68);
             this.SkinBtn2.Name = "SkinBtn2";
             this.SkinBtn2.Size = new System.Drawing.Size(83, 27);
             this.SkinBtn2.TabIndex = 1;
-            this.SkinBtn2.TabStop = true;
             this.SkinBtn2.Text = "Skin2";
             this.SkinBtn2.UseVisualStyleBackColor = true;
             this.SkinBtn2.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
@@ -147,8 +169,9 @@
             // SkinBtn1
             // 
             this.SkinBtn1.AutoSize = true;
+            this.SkinBtn1.Checked = true;
             this.SkinBtn1.Font = new System.Drawing.Font("Showcard Gothic", 10.8F, System.Drawing.FontStyle.Italic);
-            this.SkinBtn1.Location = new System.Drawing.Point(47, 68);
+            this.SkinBtn1.Location = new System.Drawing.Point(86, 68);
             this.SkinBtn1.Name = "SkinBtn1";
             this.SkinBtn1.Size = new System.Drawing.Size(82, 27);
             this.SkinBtn1.TabIndex = 0;
@@ -164,7 +187,7 @@
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel3.Controls.Add(this.SoundEffectCheck);
             this.panel3.Controls.Add(this.BackGroundSoundCheck);
-            this.panel3.Location = new System.Drawing.Point(240, 433);
+            this.panel3.Location = new System.Drawing.Point(240, 127);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(637, 133);
             this.panel3.TabIndex = 5;
@@ -180,30 +203,6 @@
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // Hard
-            // 
-            this.Hard.AutoSize = true;
-            this.Hard.Font = new System.Drawing.Font("Showcard Gothic", 10.8F, System.Drawing.FontStyle.Italic);
-            this.Hard.Location = new System.Drawing.Point(386, 57);
-            this.Hard.Name = "Hard";
-            this.Hard.Size = new System.Drawing.Size(85, 27);
-            this.Hard.TabIndex = 2;
-            this.Hard.Text = "Hard";
-            this.Hard.UseVisualStyleBackColor = true;
-            this.Hard.CheckedChanged += new System.EventHandler(this.Hard_CheckedChanged);
-            // 
-            // SkinBtn3
-            // 
-            this.SkinBtn3.AutoSize = true;
-            this.SkinBtn3.Font = new System.Drawing.Font("Showcard Gothic", 10.8F, System.Drawing.FontStyle.Italic);
-            this.SkinBtn3.Location = new System.Drawing.Point(386, 68);
-            this.SkinBtn3.Name = "SkinBtn3";
-            this.SkinBtn3.Size = new System.Drawing.Size(83, 27);
-            this.SkinBtn3.TabIndex = 2;
-            this.SkinBtn3.TabStop = true;
-            this.SkinBtn3.Text = "Skin3";
-            this.SkinBtn3.UseVisualStyleBackColor = true;
             // 
             // Option
             // 

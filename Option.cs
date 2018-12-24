@@ -74,19 +74,30 @@ namespace UIT_Snake
             }
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+    
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
-
+            if(this.SkinBtn2.Checked)
+            {
+                ParentForm.ChangeSkin(2);
+            }
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
+            if(this.SkinBtn1.Checked)
+            {
+                ParentForm.ChangeSkin(1);
+            }
+        }
 
+        private void SkinBtn3_CheckedChanged(object sender, EventArgs e)
+        {
+            if(this.SkinBtn3.Checked)
+            {
+                ParentForm.ChangeSkin(3);
+            }
         }
     }
 }

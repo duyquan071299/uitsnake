@@ -31,7 +31,7 @@ namespace UIT_Snake
                     return;
                 Label label2 = (ParentForm.Controls["label2"] as Label);
                 label2.Hide();
-                ParentForm.Screen = new GameScreen(ParentForm.pictureBox1, 1,ParentForm.MapMode);
+                ParentForm.Screen = new GameScreen(ParentForm.pictureBox1, 1,ParentForm.MapMode,ParentForm.Skin);
                 ParentForm.Gamemode = 1;
                 ParentForm.startTimer(1);
                 this.Enabled = false;
@@ -51,16 +51,17 @@ namespace UIT_Snake
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             ParentForm.Controls["ClockLabel"].Show();
+            Label label2 = (ParentForm.Controls["label2"] as Label);
+            label2.Show();
             Input.keys.Clear();
             if (ParentForm == null)
                 return;
             ParentForm.PauseBackMusic(1);
-            ParentForm.Screen = new GameScreen(ParentForm.pictureBox1, 2,ParentForm.MapMode);
+            ParentForm.Screen = new GameScreen(ParentForm.pictureBox1, 2,ParentForm.MapMode,ParentForm.Skin);
             ParentForm.Gamemode = 2;
             ParentForm.startTimer(2);
             ParentForm.startTimer(3);
             ParentForm.PauseSound();
-
             this.Enabled = false;
             this.Hide();
         }
